@@ -2,13 +2,37 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>马泓宸 | 连续创业者 · AI Agent 开发者</title>
-  <meta name="description" content="马泓宸 - 连续创业者，AI Agent 开发者，同频OS 发起人。探索 AI 如何重构个人商业系统与连接方式。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>若腾 | AI 一人创业 · 把重复活做成不用管的系统</title>
+  <meta name="description" content="若腾（马若腾）——AI 一人创业者，10 年+ 电商与品牌操盘。把内容、售后、Listing 这类重复发生的活做成能自己跑的系统：狗子画像（微信小程序）、网感实验室（360 题）、红商助手（小红书 SEO）。">
   <meta name="format-detection" content="telephone=no">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta name="author" content="若腾（马若腾）">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="若腾">
+  <meta property="og:title" content="若腾 | AI 一人创业 · 把重复活做成不用管的系统">
+  <meta property="og:description" content="10 年+ 电商与品牌操盘，现在用 AI Agent 接管重复活：狗子画像、网感实验室、红商助手。">
+  <meta property="og:image" content="assets/wanggan-icon.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="若腾 | AI 一人创业">
+  <meta name="twitter:description" content="把内容、售后、Listing 这类重复发生的活做成能自己跑的系统。">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "若腾",
+    "alternateName": ["马若腾", "Ma Ruoteng"],
+    "jobTitle": "AI 一人创业者 / 全栈 AI Agent 架构师",
+    "email": "mailto:1988map@gmail.com",
+    "knowsAbout": ["AI Agent", "电商售后自动化", "小红书 SEO / GEO", "电商 Listing", "微信小程序"],
+    "sameAs": ["https://hongshang.pro/wanggan/"]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b10'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='28' font-family='serif' fill='%23e94560'%3EM%3C/text%3E%3C/svg%3E">
   <style>
-    /* CSS Reset & Variables */
+    /* ==================== Design System ==================== */
     * {
       margin: 0;
       padding: 0;
@@ -17,190 +41,69 @@
     }
 
     :root {
-      --primary: #0f0f1a;
-      --secondary: #151528;
+      --bg: #0b0b10;
+      --bg-soft: #0e0e15;
+      --card: #12121b;
+      --card-hover: #161621;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --text: #ededf0;
+      --muted: #9a9aa8;
+      --faint: #6e6e7c;
       --accent: #e94560;
-      --accent-light: #ff6b6b;
-      --gold: #c9a227;
-      --gold-light: #e8c547;
-      --text: #eaeaea;
-      --text-muted: #8a8a9a;
-      --gradient: linear-gradient(135deg, #e94560 0%, #c9a227 100%);
-      --shadow: 0 10px 40px rgba(0,0,0,0.3);
-      --container: 1200px;
+      --accent-soft: rgba(233, 69, 96, 0.12);
+      --accent-line: rgba(233, 69, 96, 0.35);
+      --gold: #d4a853;
+      --gold-soft: rgba(212, 168, 83, 0.12);
+      --serif: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+      --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+      --container: 1060px;
+      --header-h: 64px;
     }
 
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: clip;
     }
 
     body {
-      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-      background: var(--primary);
+      font-family: var(--sans);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
-      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ==================== Article Modal ==================== */
-    .article-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .article-modal.active {
-      display: flex;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
-      margin: auto;
-      background: var(--secondary);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      overflow-y: auto;
-      position: relative;
-      transform: translateY(30px);
-      transition: transform 0.3s ease;
-    }
-
-    .article-modal.active .modal-content {
-      transform: translateY(0);
-    }
-
-    .modal-header {
-      padding: 30px 40px;
-      background: transparent;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 10;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-close:hover {
+    ::selection {
       background: var(--accent);
-      transform: rotate(90deg);
+      color: #fff;
     }
 
-    .modal-body {
-      padding: 40px;
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 28px;
     }
 
-    .modal-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      color: var(--text);
+    a {
+      color: inherit;
     }
 
-    .modal-meta {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 30px;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .modal-category {
-      padding: 5px 15px;
-      background: rgba(233, 69, 96, 0.15);
-      border: 1px solid rgba(233, 69, 96, 0.3);
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: var(--accent);
+    section {
+      padding: clamp(76px, 11vh, 116px) 0;
+      scroll-margin-top: calc(var(--header-h) + 16px);
     }
 
-    .modal-date {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .modal-article-content {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: var(--text-muted);
-    }
-
-    .modal-article-content p {
-      margin-bottom: 20px;
-    }
-
-    .modal-article-content h3 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.3rem;
-      color: var(--text);
-      margin: 30px 0 15px;
-    }
-
-    .modal-article-content strong {
-      color: var(--text);
-    }
-
-    .modal-footer {
-      padding: 20px 40px 30px;
-      text-align: center;
-    }
-
-    .modal-close-bottom {
-      padding: 14px 40px;
-      background: rgba(233, 69, 96, 0.15);
-      border: 1px solid rgba(233, 69, 96, 0.3);
-      border-radius: 30px;
-      color: var(--accent-light);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .modal-close-bottom:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    /* Scrollbar for modal */
-    .modal-content::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .modal-content::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .modal-content::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 3px;
+    section + section {
+      border-top: 1px solid var(--line);
     }
 
     /* ==================== Header ==================== */
@@ -210,88 +113,57 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      padding: 15px 0;
-      transition: all 0.3s ease;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
       background: transparent;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid transparent;
     }
 
     .header.scrolled {
-      background: rgba(15, 15, 26, 0.95);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      background: rgba(11, 11, 16, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: var(--line);
     }
 
     .header-inner {
       max-width: var(--container);
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 28px;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .logo {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.3rem;
+      font-family: var(--serif);
+      font-size: 1.25rem;
       font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1001;
-    }
-
-    .nav-toggle span {
-      width: 25px;
-      height: 2px;
-      background: var(--text);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
+    .logo span {
+      color: var(--accent);
     }
 
     .nav {
       display: flex;
       gap: 30px;
+      align-items: center;
     }
 
     .nav a {
-      color: var(--text-muted);
+      color: var(--muted);
       text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      transition: color 0.25s ease;
       position: relative;
-    }
-
-    .nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient);
-      transition: width 0.3s ease;
     }
 
     .nav a:hover,
@@ -299,1125 +171,79 @@
       color: var(--text);
     }
 
-    .nav a:hover::after,
-    .nav a.active::after {
-      width: 100%;
-    }
-
-    /* ==================== Sections ==================== */
-    section {
-      padding: 100px 20px;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-
-    .container {
-      max-width: var(--container);
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin-bottom: 50px;
-      position: relative;
-    }
-
-    .section-title::after {
+    .nav a.active::before {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--gradient);
-      border-radius: 2px;
-    }
-
-    /* ==================== Avatar Styles (Redesigned) ==================== */
-    .avatar-wrapper {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 50px;
-    }
-
-    .avatar {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: relative;
-      z-index: 3;
-      border: none;
-      box-shadow: 
-        0 0 0 2px rgba(201, 162, 39, 0.3),
-        0 0 60px rgba(233, 69, 96, 0.2),
-        0 25px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .avatar-glow {
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: var(--gradient);
-      z-index: 1;
-      opacity: 0.4;
-      filter: blur(30px);
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    .avatar-ring {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      border: 1px solid rgba(201, 162, 39, 0.2);
-      z-index: 2;
-      animation: rotate 20s linear infinite;
-    }
-
-    .avatar-ring::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      width: 20px;
-      height: 20px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 20px var(--gold);
-    }
-
-    @keyframes pulse {
-      0%, 100% { 
-        transform: scale(1); 
-        opacity: 0.4;
-      }
-      50% { 
-        transform: scale(1.08); 
-        opacity: 0.25;
-      }
-    }
-
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* ==================== Hero Section (Redesigned with Top-Tier Design) ==================== */
-    .hero {
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 120px;
-      padding-bottom: 60px;
-      min-height: 100vh;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(ellipse at 20% 10%, rgba(233, 69, 96, 0.15) 0%, transparent 45%),
-        radial-gradient(ellipse at 80% 90%, rgba(201, 162, 39, 0.1) 0%, transparent 45%),
-        radial-gradient(ellipse at 50% 50%, rgba(233, 69, 96, 0.03) 0%, transparent 70%);
-      z-index: 0;
-    }
-
-    /* Animated background particles */
-    .hero-particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .particle {
-      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
       width: 4px;
       height: 4px;
-      background: rgba(201, 162, 39, 0.3);
       border-radius: 50%;
-      animation: float 15s infinite ease-in-out;
-    }
-
-    .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 20%; top: 60%; animation-delay: 2s; }
-    .particle:nth-child(3) { left: 30%; top: 30%; animation-delay: 4s; }
-    .particle:nth-child(4) { left: 70%; top: 40%; animation-delay: 6s; }
-    .particle:nth-child(5) { left: 80%; top: 70%; animation-delay: 8s; }
-    .particle:nth-child(6) { left: 90%; top: 20%; animation-delay: 10s; }
-
-    @keyframes float {
-      0%, 100% { 
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0.3;
-      }
-      25% { 
-        transform: translateY(-30px) translateX(15px) scale(1.2);
-        opacity: 0.5;
-      }
-      50% { 
-        transform: translateY(-15px) translateX(-10px) scale(1);
-        opacity: 0.3;
-      }
-      75% { 
-        transform: translateY(-40px) translateX(20px) scale(0.8);
-        opacity: 0.4;
-      }
-    }
-
-    .hero-content {
-      z-index: 2;
-      max-width: 1000px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-    }
-
-    .hero-greeting {
-      font-size: 1rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.2s forwards;
-    }
-
-    .hero-name {
-      font-family: 'Noto Serif SC', serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      font-weight: 700;
-      margin-bottom: 15px;
-      letter-spacing: 8px;
-      background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 50%, var(--gold-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.4s forwards;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--text-muted);
-      margin-bottom: 50px;
-      letter-spacing: 4px;
-      font-weight: 300;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.6s forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-divider {
-      width: 80px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 0 auto 50px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.7s forwards;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 60px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.8s forwards;
-    }
-
-    .hero-tag {
-      padding: 12px 28px;
-      background: rgba(233, 69, 96, 0.08);
-      border: 1px solid rgba(233, 69, 96, 0.2);
-      border-radius: 30px;
-      font-size: 0.9rem;
-      color: var(--accent-light);
-      font-weight: 500;
-      letter-spacing: 1px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-tag:hover {
-      background: rgba(233, 69, 96, 0.15);
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
-    }
-
-    /* Glassmorphism Info Cards */
-    .hero-intro-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      max-width: 800px;
-      width: 100%;
-      margin-bottom: 50px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1s forwards;
-    }
-
-    .hero-info-card {
-      padding: 35px;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .hero-info-card:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(201, 162, 39, 0.2);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-info-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-      font-weight: 600;
-    }
-
-    .hero-info-content {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-    }
-
-    .hero-quote {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-style: italic;
-      color: var(--text);
-      padding: 50px 60px;
-      position: relative;
-      max-width: 700px;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.2s forwards;
-      line-height: 1.9;
-    }
-
-    .hero-quote::before {
-      content: '"';
-      position: absolute;
-      top: -10px;
-      left: 0;
-      font-size: 6rem;
-      font-family: 'Noto Serif SC', serif;
-      color: var(--accent);
-      opacity: 0.2;
-      line-height: 1;
-    }
-
-    .hero-quote strong {
-      color: var(--gold-light);
-      background: linear-gradient(135deg, var(--accent-light), var(--gold-light));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 600;
-    }
-
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.5s forwards;
-      cursor: pointer;
-    }
-
-    .scroll-indicator-mouse {
-      width: 26px;
-      height: 40px;
-      border: 2px solid rgba(201, 162, 39, 0.4);
-      border-radius: 20px;
-      position: relative;
-      margin: 0 auto 10px;
-    }
-
-    .scroll-indicator-wheel {
-      width: 4px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 2px;
-      position: absolute;
-      left: 50%;
-      top: 8px;
-      transform: translateX(-50%);
-      animation: scroll 1.5s infinite;
-    }
-
-    @keyframes scroll {
-      0% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      100% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(12px);
-      }
-    }
-
-    .scroll-indicator-text {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    /* ==================== Three Things (Enhanced) ==================== */
-    .three-things {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 70px;
-      text-align: left;
-    }
-
-    .thing-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 40px 30px;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .thing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .thing-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(233, 69, 96, 0.1);
-      border-color: rgba(233, 69, 96, 0.15);
-    }
-
-    .thing-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .thing-number {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0.4;
-      margin-bottom: 15px;
-      line-height: 1;
-      text-align: left;
-    }
-
-    .thing-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: var(--text);
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .thing-card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-      margin-bottom: 12px;
-    }
-
-    .thing-list {
-      margin-top: 20px;
-      padding-left: 20px;
-    }
-
-    .thing-list li {
-      list-style: none;
-      margin-bottom: 10px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      position: relative;
-      padding-left: 5px;
-    }
-
-    .thing-list li::before {
-      content: '→';
-      color: var(--accent);
-      position: absolute;
-      left: -18px;
-      font-size: 0.85rem;
-      top: 2px;
-    }
-
-    /* ==================== Projects (Top-Tier UI) ==================== */
-    .projects {
-      background: var(--secondary);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 45px 35px;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .project-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(233, 69, 96, 0.05) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-    }
-
-    .project-card:hover {
-      transform: translateY(-12px);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.3),
-        0 0 50px rgba(233, 69, 96, 0.15);
-      border-color: rgba(233, 69, 96, 0.2);
-    }
-
-    .project-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .project-card:hover::after {
-      opacity: 1;
-    }
-
-    .project-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 25px;
-      background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(201, 162, 39, 0.1));
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: var(--accent);
-      border: 1px solid rgba(233, 69, 96, 0.2);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .project-card:hover .project-icon {
-      background: var(--gradient);
-      color: white;
-      transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
-    }
-
-    .project-name {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-      color: var(--text);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .project-badge {
-      display: inline-block;
-      padding: 6px 16px;
-      background: rgba(201, 162, 39, 0.1);
-      border: 1px solid rgba(201, 162, 39, 0.25);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--gold);
-      margin-bottom: 20px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover .project-badge {
-      background: rgba(201, 162, 39, 0.15);
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .project-desc {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-      margin-bottom: 25px;
-    }
-
-    .project-detail {
-      padding: 25px;
-      background: rgba(233, 69, 96, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 18px;
-      border: 1px solid rgba(233, 69, 96, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .project-card:hover .project-detail {
-      background: rgba(233, 69, 96, 0.08);
-      border-color: rgba(233, 69, 96, 0.2);
-      transform: translateX(5px);
-    }
-
-    .project-detail p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      line-height: 1.8;
-    }
-
-    .project-detail p:last-child {
-      margin-bottom: 0;
-    }
-
-    .project-detail strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* ==================== Journey Timeline ==================== */
-    .journey {
-      background: var(--primary);
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 40px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 2px;
-      background: var(--gradient);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-      padding-bottom: 40px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -44px;
-      top: 5px;
-      width: 10px;
-      height: 10px;
       background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
     }
 
-    .timeline-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .timeline-content {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .timeline-quote {
-      margin-top: 20px;
-      padding: 20px;
-      background: rgba(201, 162, 39, 0.05);
-      border-radius: 15px;
-      border-left: 3px solid var(--gold);
-    }
-
-    .timeline-quote p {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 10px;
-    }
-
-    /* ==================== Writing (Top-Tier UI) ==================== */
-    .writing {
-      background: var(--secondary);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .writing-intro {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 50px;
-      line-height: 1.9;
-      max-width: 700px;
-    }
-
-    .writing-list {
-      display: grid;
-      gap: 25px;
-    }
-
-    .article-card {
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .article-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .article-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.04);
-      box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(233, 69, 96, 0.12);
-      border-color: rgba(233, 69, 96, 0.2);
-    }
-
-    .article-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .article-header {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      margin-bottom: 25px;
-    }
-
-    .article-number {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0.35;
-      min-width: 70px;
-      line-height: 1;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .article-card:hover .article-number {
-      opacity: 0.5;
-      transform: scale(1.05);
-    }
-
-    .article-info {
-      flex: 1;
-    }
-
-    .article-title {
-      font-size: 1.5rem;
-      color: var(--text);
-      margin-bottom: 10px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
-    }
-
-    .article-card:hover .article-title {
-      color: var(--accent-light);
-      transform: translateX(3px);
-    }
-
-    .article-category {
-      display: inline-block;
+    .nav a.nav-cta {
+      color: var(--accent);
+      border: 1px solid var(--accent-line);
+      border-radius: 999px;
       padding: 6px 16px;
-      background: rgba(233, 69, 96, 0.1);
-      border: 1px solid rgba(233, 69, 96, 0.2);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      transition: all 0.3s ease;
+      transition: background 0.25s ease, color 0.25s ease;
     }
 
-    .article-card:hover .article-category {
-      background: rgba(233, 69, 96, 0.15);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .article-excerpt {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-
-    .article-excerpt p {
-      margin-bottom: 15px;
-    }
-
-    .article-excerpt p:last-child {
-      margin-bottom: 0;
-    }
-
-    .article-read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--gold);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 8px 0;
-      border-bottom: 1px solid transparent;
-    }
-
-    .article-read-more:hover {
-      gap: 15px;
-      color: var(--gold-light);
-      border-bottom-color: var(--gold);
-    }
-
-    .article-read-more span {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .article-card:hover .article-read-more span {
-      transform: translateX(4px);
-    }
-
-    /* ==================== Now ==================== */
-    .now {
-      background: var(--primary);
-    }
-
-    .now-section {
-      margin-bottom: 40px;
-    }
-
-    .now-title {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 15px;
-    }
-
-    .now-content {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-    }
-
-    .now-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .now-list li {
-      margin-bottom: 12px;
-      padding-left: 25px;
-      position: relative;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .now-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-
-    .highlight-box {
-      padding: 30px;
-      background: rgba(201, 162, 39, 0.08);
-      border-radius: 20px;
-      border: 1px solid rgba(201, 162, 39, 0.2);
-      margin-top: 30px;
-    }
-
-    .highlight-box p {
-      font-size: 1.1rem;
-      color: var(--text);
-      line-height: 1.9;
-      font-style: italic;
-    }
-
-    /* ==================== Work With Me ==================== */
-    .work-with-me {
-      background: var(--secondary);
-    }
-
-    .work-intro {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      line-height: 1.8;
-    }
-
-    .work-list {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 40px;
-    }
-
-    .work-list li {
-      margin-bottom: 15px;
-      padding: 20px 25px;
-      background: rgba(233, 69, 96, 0.05);
-      border-radius: 12px;
-      border-left: 3px solid var(--accent);
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    .contact-cta {
-      text-align: center;
-      padding: 40px;
-      background: linear-gradient(145deg, rgba(233, 69, 96, 0.1), rgba(201, 162, 39, 0.05));
-      border-radius: 20px;
-      border: 1px solid rgba(233, 69, 96, 0.15);
-    }
-
-    .contact-cta h3 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 35px;
-      background: var(--gradient);
-      border: none;
-      border-radius: 30px;
-      color: white;
-      font-size: 1rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(233, 69, 96, 0.35);
-    }
-
-    .contact-btn.outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--text);
-    }
-
-    .contact-btn.outline:hover {
+    .nav a.nav-cta:hover {
       background: var(--accent);
-      color: white;
+      color: #fff;
     }
 
-    /* ==================== About ==================== */
-    .about {
-      background: var(--primary);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-    }
-
-    .about-text {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.9;
-    }
-
-    .about-text p {
-      margin-bottom: 20px;
-    }
-
-    .about-text strong {
-      color: var(--text);
-    }
-
-    .about-section {
-      margin-bottom: 30px;
-    }
-
-    .about-section h4 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 15px;
-    }
-
-    .belief-box {
-      padding: 35px;
-      background: rgba(201, 162, 39, 0.08);
-      border-radius: 20px;
-      border: 1px solid rgba(201, 162, 39, 0.2);
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .belief-box p {
-      font-size: 1.2rem;
-      color: var(--text);
-      font-style: italic;
-      line-height: 1.9;
-    }
-
-    /* ==================== Footer ==================== */
-    .footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: rgba(0, 0, 0, 0.3);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .footer p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* ==================== Mobile Nav ==================== */
-    .nav-overlay {
+    .nav a.nav-cta.active::before {
       display: none;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 10px 8px;
+      background: transparent;
+      border: 0;
+      z-index: 1001;
+    }
+
+    .nav-toggle span {
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* Mobile nav overlay */
+    .nav-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 15, 26, 0.98);
+      inset: 0;
+      background: rgba(11, 11, 16, 0.98);
       z-index: 999;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 8px;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .nav-overlay.active {
@@ -1426,42 +252,1916 @@
     }
 
     .nav-overlay a {
-      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      color: var(--muted);
       text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      padding: 10px 24px;
+      letter-spacing: 2px;
+      transition: color 0.25s ease;
     }
 
     .nav-overlay a:hover,
     .nav-overlay a.active {
+      color: var(--text);
+    }
+
+    .nav-overlay a.nav-cta {
+      color: var(--accent);
+      font-size: 1.2rem;
+      margin-top: 18px;
+      border: 1px solid var(--accent-line);
+      border-radius: 999px;
+      padding: 10px 34px;
+    }
+
+    /* ==================== Hero ==================== */
+    .hero {
+      position: relative;
+      padding: calc(var(--header-h) + clamp(30px, 4.5vh, 50px)) 0 clamp(44px, 6vh, 62px);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(760px, 100%);
+      height: 460px;
+      background: radial-gradient(ellipse at center, rgba(233, 69, 96, 0.10) 0%, rgba(233, 69, 96, 0.03) 45%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero-center {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 152px;
+      height: 152px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 152px;
+      height: 152px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 1px var(--line-strong), 0 14px 36px rgba(0, 0, 0, 0.32);
+    }
+
+    .avatar-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 168, 83, 0.26);
+      border-top-color: rgba(212, 168, 83, 0.55);
+      border-right-color: rgba(212, 168, 83, 0.34);
+      z-index: 1;
+      animation: spin 30s linear infinite;
+    }
+
+    .now-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      max-width: 100%;
+      padding: 7px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.74rem;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .now-pill i {
+      width: 5px;
+      height: 5px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.14);
+      animation: breathe 2.6s ease-in-out infinite;
+    }
+
+    .now-pill b {
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 0.66rem;
+      white-space: nowrap;
+    }
+
+    .now-pill span {
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .now-pill .now-desc {
+      color: var(--faint);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5.6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: 6px;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-subtitle span {
+      display: inline-block;
+    }
+
+    .hero-subtitle i {
+      font-style: normal;
+      margin: 0 8px;
+      color: var(--faint);
+    }
+
+    .hero-fullname {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 1.6px;
+      color: var(--faint);
+      margin: -8px 0 18px;
+    }
+
+    .hero-lede {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.9;
+      margin: 0 auto 24px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 15px;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .hero-tag:hover {
+      border-color: var(--accent-line);
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      padding: 13px 30px;
+      border-radius: 999px;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(233, 69, 96, 0.28);
+    }
+
+    .btn-outline {
+      border-color: var(--line-strong);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    .hero-proof {
+      display: flex;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    .hero-proof-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-proof-item + .hero-proof-item {
+      border-left: 1px solid var(--line);
+    }
+
+    .hero-proof-item strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .hero-proof-item span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--faint);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-proof-item .proof-short {
+      display: none;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ==================== Section Head ==================== */
+    .sec-head {
+      margin-bottom: clamp(40px, 6vh, 60px);
+    }
+
+    .sec-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      color: var(--faint);
+      margin-bottom: 14px;
+    }
+
+    .sec-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .sec-eyebrow em {
+      font-style: normal;
+      color: var(--accent);
+      font-family: var(--serif);
+      font-size: 0.85rem;
+    }
+
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1.3;
+    }
+
+    .sec-lead {
+      margin-top: 14px;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ==================== Projects · Bento ==================== */
+    .projects {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero + .projects {
+      padding-top: clamp(52px, 6.5vh, 74px);
+    }
+
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 72px 72px;
+      -webkit-mask-image: radial-gradient(ellipse 76% 62% at 50% 0%, #000 0%, transparent 76%);
+      mask-image: radial-gradient(ellipse 76% 62% at 50% 0%, #000 0%, transparent 76%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .projects .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .projects-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: clamp(34px, 5vh, 52px);
+    }
+
+    .projects-head .sec-lead {
+      max-width: 520px;
+    }
+
+    .projects-stats {
+      display: flex;
+      gap: 32px;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+
+    .projects-stats div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .projects-stats strong {
+      font-family: var(--mono);
+      font-size: 1.45rem;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .projects-stats span {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--faint);
+      white-space: nowrap;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .bento-card {
+      --mx: 50%;
+      --my: 0%;
+      --pad: 22px;
+      --gap: 14px;
+      --title: 1.32rem;
+      --desc: 0.85rem;
+      --point: 0.78rem;
+      --mock-w: 200px;
+      --mock-h: auto;
+      position: relative;
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      padding: var(--pad);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.006) 100%),
+        var(--card);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(360px circle at var(--mx) var(--my), rgba(233, 69, 96, 0.13), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+
+    .bento-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(120% 60% at 50% -20%, rgba(255, 255, 255, 0.06), transparent 60%);
+      pointer-events: none;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.45);
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card.wide {
+      --pad: 30px;
+      --gap: 18px;
+      --title: 2rem;
+      --desc: 0.95rem;
+      --point: 0.84rem;
+      --mock-w: 264px;
+      grid-column: span 6;
+    }
+
+    .bento-card.half {
+      --mock-w: 180px;
+      --mock-h: 210px;
+      grid-column: span 3;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 8px 10px;
+      flex-wrap: wrap;
+    }
+
+    .card-index {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 1.6px;
+      color: var(--faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-role {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .card-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.66rem;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 10px;
+      background: rgba(0, 0, 0, 0.24);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .card-status i {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--faint);
+      flex-shrink: 0;
+    }
+
+    /* 状态语义：绿 = 已上线，金 = 内测验收，默认灰 = 在研 */
+    .card-status.is-live i {
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.12);
+    }
+
+    .card-status.is-beta i {
+      background: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.12);
+    }
+
+    .card-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      align-content: start;
+    }
+
+    .bento-card.wide .card-body {
+      grid-template-columns: minmax(0, 1fr) var(--mock-w);
+      align-items: center;
+      gap: clamp(28px, 5vw, 64px);
+    }
+
+    .card-copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-family: var(--serif);
+      font-size: var(--title);
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .bento-card.wide .card-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+      letter-spacing: 1.5px;
+    }
+
+    .card-title-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      border: 1px solid var(--line-strong);
+      flex-shrink: 0;
+    }
+
+    .card-sub {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .card-sub .sub-en {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .card-sub .sub-cn {
+      font-size: 0.72rem;
+      letter-spacing: 0.3px;
+      color: var(--faint);
+    }
+
+    .card-sub .sub-cn::before {
+      content: '/';
+      margin-right: 8px;
+      color: var(--line-strong);
+    }
+
+    .card-desc {
+      font-size: var(--desc);
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .bento-card.wide .card-desc {
+      max-width: 420px;
+    }
+
+    .card-points {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .card-points li {
+      position: relative;
+      padding-left: 16px;
+      font-size: var(--point);
+      line-height: 1.7;
+      color: var(--faint);
+    }
+
+    .card-points li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+    }
+
+    .bento-card.wide .card-points li {
+      color: var(--muted);
+    }
+
+    .card-foot {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px 12px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .card-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .chip {
+      font-family: var(--sans);
+      font-size: 0.66rem;
+      letter-spacing: 0.2px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 8px;
+      background: rgba(0, 0, 0, 0.18);
+      white-space: nowrap;
+    }
+
+    .card-cta {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.3px;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color 0.28s ease, background 0.28s ease, color 0.28s ease;
+    }
+
+    .card-cta b {
+      font-weight: 400;
+      transition: transform 0.28s ease;
+    }
+
+    .card-cta:hover {
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+    }
+
+    .card-cta:hover b {
+      transform: translateX(3px);
+    }
+
+    .card-cta:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ---------- CSS product mocks ---------- */
+    .card-mock {
+      width: var(--mock-w);
+      max-width: 100%;
+      height: var(--mock-h, auto);
+      justify-content: flex-end;
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .mock-caption {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.8px;
+      line-height: 1.6;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .mock-phone {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      background: linear-gradient(180deg, #15151f 0%, #0e0e16 100%);
+      padding: 16px 14px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .mock-phone::before {
+      content: '';
+      display: block;
+      width: 44px;
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.18);
+      margin: 0 auto 14px;
+    }
+
+    .mp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .mp-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      border-radius: 5px;
+      padding: 2px 7px;
+    }
+
+    .mp-step {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      color: var(--faint);
+    }
+
+    .mp-q {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .mp-opts {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .mp-opt {
+      font-size: 0.66rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 6px 9px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .mp-opt.on {
+      color: var(--text);
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+    }
+
+    .mp-meters {
+      display: grid;
+      gap: 6px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .mp-meter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.56rem;
+      color: var(--faint);
+    }
+
+    .mp-meter span {
+      width: 22px;
+      flex-shrink: 0;
+    }
+
+    .mp-meter i {
+      position: relative;
+      flex: 1;
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+    }
+
+    .mp-meter i::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: var(--v);
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    /* 02 · 动作卡面板 */
+    .mock-tasks {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent), #0f0f17;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mt-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    .mt-head b {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.58rem;
+      color: var(--gold);
+    }
+
+    .mt-bar {
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+    }
+
+    .mt-bar i {
+      display: block;
+      height: 100%;
+      width: var(--v);
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    .mt-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.64rem;
+      color: var(--faint);
+      line-height: 1.4;
+    }
+
+    .mt-row i {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      border: 1px solid var(--line-strong);
+      font-style: normal;
+      font-size: 0.5rem;
+      line-height: 10px;
+      text-align: center;
+      color: transparent;
+    }
+
+    .mt-row.is-done i {
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
       color: var(--accent);
     }
 
-    /* ==================== Responsive ==================== */
-    @media (max-width: 1024px) {
-      .three-things {
-        grid-template-columns: repeat(2, 1fr);
+    .mt-row.is-done span {
+      color: var(--muted);
+    }
+
+    .mt-row em {
+      margin-left: auto;
+      font-style: normal;
+      font-family: var(--mono);
+      font-size: 0.54rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .mt-row:not(.is-done) em {
+      color: var(--faint);
+    }
+
+    .mt-foot {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 2px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--line);
+      font-size: 0.56rem;
+      color: var(--faint);
+      letter-spacing: 0.3px;
+    }
+
+    .mt-foot b {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+
+    .mock-radar {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ---------- Also in progress ---------- */
+    .also {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.012);
+      overflow: hidden;
+    }
+
+    .also-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 22px;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 1.6px;
+      color: var(--faint);
+    }
+
+    .also-head span:first-child {
+      color: var(--gold);
+    }
+
+    .also-row {
+      display: grid;
+      grid-template-columns: 132px 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 22px;
+      transition: background 0.3s ease;
+    }
+
+    .also-row + .also-row {
+      border-top: 1px solid var(--line);
+    }
+
+    .also-row:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .also-name {
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--text);
+    }
+
+    .also-desc {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--faint);
+    }
+
+    .also-meta {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    /* ---------- 试用入口 ---------- */
+    .card-entry {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+      padding: 10px 12px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .entry-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 1px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .entry-path {
+      font-size: 0.82rem;
+      color: var(--text);
+      letter-spacing: 0.3px;
+    }
+
+    .entry-copy {
+      margin-left: auto;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .entry-copy:hover {
+      border-color: var(--accent-line);
+      color: var(--text);
+    }
+
+    /* ---------- Projects · 转化出口 ---------- */
+    .projects-outro {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:
+        radial-gradient(120% 140% at 0% 0%, rgba(233, 69, 96, 0.09), transparent 58%),
+        rgba(255, 255, 255, 0.014);
+    }
+
+    .outro-copy {
+      min-width: 0;
+    }
+
+    .outro-copy strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .outro-copy p {
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .outro-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      letter-spacing: 0.6px;
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .outro-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(233, 69, 96, 0.28);
+    }
+
+    .posts-store { display: none; }
+
+    /* ==================== Impact ==================== */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .impact-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px 28px;
+      transition: border-color 0.28s ease, transform 0.28s ease;
+    }
+
+    .impact-card:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-3px);
+    }
+
+    .impact-number {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .impact-card h3 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .impact-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .impact-list {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .impact-list li {
+      font-size: 0.82rem;
+      color: var(--faint);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .impact-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+    }
+
+    .impact-quote {
+      margin-top: 40px;
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+      color: var(--text);
+      letter-spacing: 1px;
+      line-height: 2;
+    }
+
+    .impact-quote strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ==================== Journey ==================== */
+    .timeline {
+      position: relative;
+      max-width: 760px;
+      padding-left: 36px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent-line) 0%, var(--line) 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 38px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+
+    .timeline-title {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-content {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 640px;
+    }
+
+    .timeline-quote {
+      margin-top: 20px;
+      padding: 18px 24px;
+      border-left: 2px solid var(--gold);
+      background: var(--gold-soft);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .timeline-quote p {
+      font-family: var(--serif);
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    /* ==================== Writing ==================== */
+    .writing-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .article-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 26px 30px;
+      cursor: pointer;
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .article-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-line);
+      background: var(--card-hover);
+    }
+
+    .article-number {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--faint);
+      text-align: center;
+    }
+
+    .article-card:hover .article-number {
+      color: var(--accent);
+    }
+
+    .article-title {
+      font-size: 1.06rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .article-category {
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 3px 12px;
+    }
+
+    .article-excerpt {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .article-arrow {
+      font-size: 1.2rem;
+      color: var(--faint);
+      transition: transform 0.28s ease, color 0.28s ease;
+    }
+
+    .article-card:hover .article-arrow {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+
+    /* ==================== Now ==================== */
+    .now-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .now-card-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 32px 34px;
+    }
+
+    .now-card-box h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: var(--gold);
+    }
+
+    .now-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .now-list li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .now-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.75;
+    }
+
+    .now-list strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .anchor-box {
+      background: linear-gradient(160deg, rgba(233, 69, 96, 0.09) 0%, var(--card) 60%);
+      border: 1px solid var(--accent-line);
+      border-radius: 18px;
+      padding: 32px 34px;
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+
+    .anchor-box h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .anchor-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    /* ==================== Work With Me ==================== */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 46px;
+    }
+
+    .work-tag {
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.6px;
+      color: var(--gold);
+    }
+
+    .work-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 30px;
+      transition: border-color 0.28s ease, transform 0.28s ease;
+    }
+
+    .work-item:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+    }
+
+    .work-item h3 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .work-item h3::before {
+      content: counter(work, decimal-leading-zero);
+      counter-increment: work;
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .work-grid {
+      counter-reset: work;
+    }
+
+    .work-item p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-block {
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: clamp(40px, 7vh, 64px) 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-block::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      height: 240px;
+      background: radial-gradient(ellipse at center, rgba(233, 69, 96, 0.16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-block h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .contact-block > p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 34px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .contact-btn:hover {
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    .contact-btn.copied {
+      border-color: #07c160;
+      color: #07c160;
+    }
+
+    .contact-btn .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .contact-btn .dot.mail {
+      background: var(--accent);
+    }
+
+    .contact-btn .dot.wechat {
+      background: #07c160;
+    }
+
+    /* ==================== About ==================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 48px);
+    }
+
+    .about-block h4 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-block h4::before {
+      content: '';
+      width: 18px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .about-block {
+      margin-bottom: 30px;
+    }
+
+    .about-block p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 8px;
+    }
+
+    .about-block strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .belief-box {
+      background: var(--gold-soft);
+      border: 1px solid rgba(212, 168, 83, 0.3);
+      border-radius: 14px;
+      padding: 26px 30px;
+      margin-top: 34px;
+    }
+
+    .belief-box p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--text);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .belief-box strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ==================== Footer ==================== */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--faint);
+      letter-spacing: 0.5px;
+    }
+
+    .footer .up {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.25s ease;
+    }
+
+    .footer .up:hover {
+      color: var(--accent);
+    }
+
+    /* ==================== Article Modal ==================== */
+    .article-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 8, 12, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .article-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 760px;
+      max-height: 86vh;
+      background: var(--bg-soft);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.3s ease;
+    }
+
+    .article-modal.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-content::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: var(--line-strong);
+      border-radius: 3px;
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 16px;
+      margin-left: calc(100% - 60px);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s ease, transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: 0 clamp(28px, 6vw, 56px) 48px;
+      margin-top: -34px;
+    }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 3vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-category {
+      padding: 4px 14px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    .modal-date {
+      color: var(--faint);
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-article-content {
+      font-size: 0.96rem;
+      line-height: 2;
+      color: var(--muted);
+    }
+
+    .modal-article-content p {
+      margin-bottom: 20px;
+    }
+
+    .modal-article-content h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--text);
+      letter-spacing: 1px;
+      margin: 32px 0 14px;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .modal-article-content strong {
+      color: var(--text);
+    }
+
+    .modal-footer {
+      padding: 0 clamp(28px, 6vw, 56px) 32px;
+      text-align: center;
+    }
+
+    .modal-close-bottom {
+      padding: 12px 38px;
+      background: transparent;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .modal-close-bottom:hover {
+      border-color: var(--accent-line);
+      background: var(--accent-soft);
+    }
+
+    /* ==================== Reveal Animation ==================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
 
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .avatar-ring {
+        animation: none;
       }
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        padding-top: 100px;
-        padding-bottom: 50px;
-      }
-      :root {
-        --container: 100%;
-      }
-
-      section {
-        padding: 60px 20px;
+    /* ==================== Responsive ==================== */
+    @media (max-width: 960px) {
+      .avatar-wrapper,
+      .avatar {
+        width: 146px;
+        height: 146px;
       }
 
+      .avatar-wrapper {
+        margin-bottom: 20px;
+      }
+
+      .projects-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 26px;
+      }
+
+      .projects-stats {
+        gap: 26px;
+        padding-bottom: 0;
+      }
+
+      .bento-card.wide {
+        --mock-w: 210px;
+        grid-column: span 6;
+        grid-row: auto;
+      }
+
+      .bento-card {
+        grid-column: span 3;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .now-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .anchor-box {
+        position: static;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
       .nav {
         display: none;
       }
@@ -1470,393 +2170,239 @@
         display: flex;
       }
 
-      .nav-overlay {
-        display: flex;
+      .hero-proof {
+        gap: 0;
+        border-top: 1px solid var(--line);
       }
 
-      .three-things {
-        grid-template-columns: 1fr;
-        margin-top: 50px;
+      .hero-proof-item + .hero-proof-item {
+        border-left: 1px solid var(--line);
+        padding-left: 8px;
+        padding-right: 8px;
       }
 
-      .thing-card {
-        padding: 30px 25px;
-      }
-
-      .thing-number {
-        font-size: 2rem;
-      }
-
-      .thing-card h3 {
-        font-size: 1.15rem;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-card {
-        padding: 35px 30px;
-      }
-
-      .project-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-      }
-
-      .project-name {
-        font-size: 1.3rem;
-      }
-
-      .project-detail {
-        padding: 20px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .avatar-wrapper {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 40px;
-      }
-
-      .avatar {
-        width: 150px;
-        height: 150px;
-      }
-
-      .avatar-glow {
-        width: 180px;
-        height: 180px;
-        top: -15px;
-        left: -15px;
-      }
-
-      .avatar-ring {
-        width: 165px;
-        height: 165px;
-        top: -7.5px;
-        left: -7.5px;
-      }
-
-      .hero-greeting {
-        font-size: 0.85rem;
-        margin-bottom: 20px;
-      }
-
-      .hero-name {
-        letter-spacing: 4px;
-        margin-bottom: 10px;
-      }
-
-      .hero-subtitle {
-        margin-bottom: 35px;
-        letter-spacing: 2px;
-      }
-
-      .hero-divider {
-        width: 60px;
-        margin-bottom: 35px;
-      }
-
-      .hero-tags {
-        gap: 10px;
-        margin-bottom: 40px;
-      }
-
-      .hero-tag {
-        padding: 10px 20px;
-        font-size: 0.85rem;
-      }
-
-      .hero-intro-section {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .hero-info-card {
-        padding: 25px;
-      }
-
-      .hero-info-title {
-        font-size: 1rem;
-        margin-bottom: 12px;
-      }
-
-      .hero-info-content {
-        font-size: 0.95rem;
-      }
-
-      .hero-quote {
-        font-size: 1.05rem;
-        padding: 35px 30px;
-      }
-
-      .hero-quote::before {
-        font-size: 4rem;
-        top: -5px;
+      .hero-proof-item {
+        padding-right: 8px;
       }
 
       .article-card {
-        flex-direction: column;
-        text-align: center;
+        grid-template-columns: 36px 1fr;
       }
 
-      .article-header {
-        flex-direction: column;
-        align-items: center;
+      .article-arrow {
+        display: none;
       }
 
-      .contact-links {
-        flex-direction: column;
+      .article-number {
+        font-size: 1.15rem;
       }
 
-      .contact-btn {
+      .bento-card,
+      .bento-card.half,
+      .bento-card.wide {
+        --mock-w: 100%;
+        --mock-h: auto;
+        grid-column: span 6;
+      }
+
+      .bento-card.wide .card-body {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+      }
+
+      .card-mock {
+        max-width: 260px;
+      }
+
+      .card-cta {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        padding: 10px 14px;
+        min-height: 40px;
+      }
+
+      .card-role {
+        display: none;
+      }
+
+      .projects-outro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px 18px;
+      }
+
+      .outro-btn {
         width: 100%;
         justify-content: center;
       }
 
-      .modal-header {
-        padding: 25px 20px;
+      .also-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        padding: 12px 18px;
+        line-height: 1.5;
       }
 
-      .modal-body {
-        padding: 25px 20px;
+      .also-row {
+        grid-template-columns: 1fr auto;
+        gap: 5px 12px;
+        padding: 12px 18px;
       }
 
-      .modal-title {
-        font-size: 1.4rem;
-        padding-right: 30px;
+      .also-name {
+        grid-column: 1;
+        grid-row: 1;
       }
 
-      .modal-close {
-        top: 15px;
-        right: 15px;
-        width: 35px;
-        height: 35px;
-        font-size: 1.3rem;
+      .also-desc {
+        grid-column: 1 / -1;
+        grid-row: 2;
       }
 
-      .modal-footer {
-        padding: 15px 20px 25px;
-      }
-
-      .modal-close-bottom {
-        width: 100%;
-        padding: 12px 30px;
+      .also-meta {
+        grid-column: 2;
+        grid-row: 1;
       }
     }
 
     @media (max-width: 480px) {
-      .avatar-wrapper {
-        width: 130px;
-        height: 130px;
-        margin-bottom: 30px;
+      .container {
+        padding: 0 20px;
       }
 
+      .header-inner {
+        padding: 0 20px;
+      }
+
+      .avatar-wrapper,
       .avatar {
-        width: 130px;
-        height: 130px;
+        width: 116px;
+        height: 116px;
       }
 
-      .avatar-glow {
-        width: 155px;
-        height: 155px;
-        top: -12.5px;
-        left: -12.5px;
+      .avatar-wrapper {
+        margin-bottom: 18px;
       }
 
-      .avatar-ring {
-        width: 140px;
-        height: 140px;
-        top: -5px;
-        left: -5px;
+      .now-pill {
+        gap: 8px;
+        padding: 5px 13px;
+        margin-bottom: 22px;
+        font-size: 0.68rem;
       }
 
-      .hero-greeting {
-        font-size: 0.75rem;
-        margin-bottom: 15px;
-        letter-spacing: 2px;
+      .now-pill .now-desc {
+        display: none;
       }
 
       .hero-name {
-        letter-spacing: 3px;
-        margin-bottom: 8px;
-      }
-
-      .hero-subtitle {
-        margin-bottom: 25px;
-        letter-spacing: 1.5px;
-      }
-
-      .hero-divider {
-        width: 50px;
-        margin-bottom: 25px;
-      }
-
-      .hero-tags {
-        gap: 8px;
-        margin-bottom: 30px;
-      }
-
-      .hero-tag {
-        padding: 8px 16px;
-        font-size: 0.8rem;
-      }
-
-      .hero-info-card {
-        padding: 20px;
-      }
-
-      .hero-info-title {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
-      }
-
-      .hero-info-content {
-        font-size: 0.9rem;
-        line-height: 1.7;
-      }
-
-      .hero-quote {
-        font-size: 1rem;
-        padding: 30px 20px;
-      }
-
-      .hero-quote::before {
-        font-size: 3rem;
-        top: -3px;
-      }
-
-      .scroll-indicator {
-        bottom: 30px;
-      }
-
-      .scroll-indicator-mouse {
-        width: 22px;
-        height: 34px;
-      }
-
-      .scroll-indicator-text {
-        font-size: 0.7rem;
-      }
-
-      .three-things {
-        gap: 20px;
-      }
-
-      .thing-card {
-        padding: 25px 20px;
-      }
-
-      .thing-number {
-        font-size: 1.8rem;
+        letter-spacing: 4px;
         margin-bottom: 12px;
       }
 
-      .thing-card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
+      .hero-subtitle {
+        font-size: 0.92rem;
+        margin-bottom: 16px;
       }
 
-      .thing-card p {
+      .hero-lede {
         font-size: 0.9rem;
         line-height: 1.8;
-      }
-
-      .thing-list li {
-        font-size: 0.85rem;
-        margin-bottom: 8px;
-      }
-
-      .projects-grid {
-        gap: 20px;
-      }
-
-      .project-card {
-        padding: 30px 25px;
-      }
-
-      .project-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.4rem;
         margin-bottom: 20px;
       }
 
-      .project-name {
-        font-size: 1.2rem;
+      .hero-tags {
+        gap: 7px;
+        margin-bottom: 24px;
+      }
+
+      .hero-tag {
+        font-size: 0.66rem;
+        padding: 5px 11px;
+      }
+
+      .hero-actions {
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        padding: 11px 22px;
+        font-size: 0.88rem;
+      }
+
+      .hero-proof-item strong {
+        font-size: 1.05rem;
+      }
+
+      .hero-proof-item span {
+        font-size: 0.68rem;
+      }
+
+      .hero-proof-item .proof-full {
+        display: none;
+      }
+
+      .hero-proof-item .proof-short {
+        display: block;
+      }
+
+      .bento-card,
+      .bento-card.wide {
+        --pad: 20px;
+        --title: 1.5rem;
+      }
+
+      .bento-card.wide .card-title {
+        gap: 10px;
+      }
+
+      .card-mock {
+        max-width: 250px;
+      }
+
+      .mock-phone {
+        padding: 13px 12px;
+        border-radius: 18px;
+      }
+
+      .mock-phone::before {
+        width: 34px;
         margin-bottom: 10px;
       }
 
-      .project-badge {
-        padding: 5px 12px;
-        font-size: 0.75rem;
-      }
-
-      .project-desc {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-      }
-
-      .project-detail {
-        padding: 18px;
-      }
-
-      .project-detail p {
-        font-size: 0.9rem;
+      .bento-card.wide .card-desc {
+        max-width: none;
       }
 
       .timeline {
-        padding-left: 25px;
-      }
-
-      .timeline::before {
-        left: 5px;
+        padding-left: 28px;
       }
 
       .timeline-item::before {
-        left: -14px;
+        left: -28px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-proof-item {
+        padding-right: 6px;
       }
 
-      .article-card {
-        padding: 25px 20px;
+      .hero-proof-item + .hero-proof-item {
+        padding-left: 6px;
       }
 
-      .article-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-
-      .article-number {
-        font-size: 2.2rem;
-        min-width: 50px;
-      }
-
-      .article-title {
-        font-size: 1.25rem;
-      }
-
-      .article-category {
-        padding: 5px 12px;
-        font-size: 0.75rem;
-      }
-
-      .article-excerpt {
-        font-size: 0.95rem;
-      }
-
-      .article-read-more {
-        font-size: 0.9rem;
-      }
-
-      .article-excerpt {
+      .hero-proof-item strong {
         font-size: 1rem;
+      }
+
+      .hero-proof-item span {
+        font-size: 0.62rem;
+        letter-spacing: 0;
       }
     }
   </style>
@@ -1865,21 +2411,20 @@
   <!-- Header -->
   <header class="header" id="header">
     <div class="header-inner">
-      <div class="logo">MHC</div>
-      <nav class="nav">
+      <a href="#home" class="logo" aria-label="返回首页">MR<span>T</span></a>
+      <nav class="nav" aria-label="主导航">
         <a href="#home" class="active">首页</a>
         <a href="#projects">项目</a>
-        <a href="#journey">历程</a>
-        <a href="#writing">写作</a>
-        <a href="#now">现在</a>
-        <a href="#work">合作</a>
+        <a href="#journey">履历</a>
+        <a href="#writing">文章</a>
         <a href="#about">关于</a>
+        <a href="#work" class="nav-cta">聊聊合作</a>
       </nav>
-      <div class="nav-toggle" id="navToggle">
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="打开导航菜单" aria-controls="navOverlay" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -1887,435 +2432,632 @@
   <div class="nav-overlay" id="navOverlay">
     <a href="#home" onclick="closeNav()">首页</a>
     <a href="#projects" onclick="closeNav()">项目</a>
-    <a href="#journey" onclick="closeNav()">历程</a>
-    <a href="#writing" onclick="closeNav()">写作</a>
-    <a href="#now" onclick="closeNav()">现在</a>
-    <a href="#work" onclick="closeNav()">合作</a>
+    <a href="#journey" onclick="closeNav()">履历</a>
+    <a href="#writing" onclick="closeNav()">文章</a>
     <a href="#about" onclick="closeNav()">关于</a>
+    <a href="#work" onclick="closeNav()" class="nav-cta">聊聊合作</a>
   </div>
 
-  <!-- Home Section -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    
-    <!-- Animated Particles -->
-    <div class="hero-particles">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-    
-    <div class="container">
-      <div class="hero-content">
-        <p class="hero-greeting">Hello, I'm</p>
-        
-        <div class="avatar-wrapper">
-          <img src="6a6727cfd7b089b78d10e2220d1e6749.jpg" alt="马泓宸" class="avatar">
-          <div class="avatar-glow"></div>
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-center">
+        <div class="avatar-wrapper reveal">
           <div class="avatar-ring"></div>
+          <img class="avatar" src="6a6727cfd7b089b78d10e2220d1e6749.jpg" alt="若腾（马若腾）头像">
         </div>
-        
-        <h1 class="hero-name">马泓宸</h1>
-        <p class="hero-subtitle">连续创业者 · AI Agent 开发者 · 同频OS 发起人</p>
-        
-        <div class="hero-divider"></div>
-        
+
+        <h1 class="hero-name reveal">若腾</h1>
+        <p class="hero-fullname reveal">马若腾 · Ma Ruoteng</p>
+
+        <p class="hero-subtitle reveal">
+          <span>AI 一人创业者</span><i>·</i><span>全栈 AI Agent 架构师</span>
+        </p>
+
+        <p class="hero-lede reveal">帮电商和内容团队把<strong>重复发生的活</strong>——售后工单、内容 SEO、Listing 上新——做成不用你再盯着的系统。10 年+ 电商与品牌操盘，现在自己写代码、自己交付。</p>
+
         <div class="hero-tags">
-          <span class="hero-tag">AI Agent 开发者</span>
-          <span class="hero-tag">AI 创业者</span>
-          <span class="hero-tag">同频OS 发起人</span>
+          <span class="hero-tag">电商售后自动化</span>
+          <span class="hero-tag">小红书 / 微信 SEO + GEO</span>
+          <span class="hero-tag">电商 Listing</span>
+          <span class="hero-tag">狗子画像 发起人</span>
+          <span class="hero-tag">网感实验室 发起人</span>
         </div>
 
-        <!-- Glassmorphism Info Cards -->
-        <div class="hero-intro-section">
-          <div class="hero-info-card">
-            <h3 class="hero-info-title">研究方向</h3>
-            <p class="hero-info-content">
-              AI × 人性 × 关系结构<br>
-              探索技术的边界与人性的深度
-            </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">看正在做的事 →</a>
+          <a href="#work" class="btn btn-outline">三条服务线</a>
+        </div>
+
+        <div class="hero-proof">
+          <div class="hero-proof-item">
+            <strong>10 年+</strong>
+            <span class="proof-full">电商与品牌操盘</span>
+            <span class="proof-short">电商操盘</span>
           </div>
-          
-          <div class="hero-info-card">
-            <h3 class="hero-info-title">正在重构</h3>
-            <p class="hero-info-content">
-              个人商业系统 · 内容生产方式<br>
-              人与人之间的连接
-            </p>
+          <div class="hero-proof-item">
+            <strong>360 题</strong>
+            <span class="proof-full">已上线小程序题库</span>
+            <span class="proof-short">已上线题库</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>2343 条</strong>
+            <span class="proof-full">自动化测试断言</span>
+            <span class="proof-short">测试断言</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="hero-quote">
-          <strong>技术不断向上，人始终向内。</strong>
+    <!-- Projects -->
+    <section id="projects" class="projects">
+      <div class="bg-grid" aria-hidden="true"></div>
+      <div class="container">
+        <header class="projects-head reveal">
+          <div>
+            <p class="sec-eyebrow"><em>01</em>SELECTED WORK</p>
+            <h2 class="sec-title">正在做的事</h2>
+            <p class="sec-lead">主推一个正在冲刺的产品，下面两个是已经跑过一遍、可以当证据的。其余实验都收进「关于我」，不在这儿分流。</p>
+          </div>
+          <div class="projects-stats">
+            <div><strong>360</strong><span>已上线情境题</span></div>
+            <div><strong>02</strong><span>真实付费订单</span></div>
+            <div><strong>2343</strong><span>自动化断言</span></div>
+          </div>
+        </header>
+
+        <div class="bento">
+          <!-- 01 狗子画像 · 主推 -->
+          <article class="bento-card wide reveal">
+            <div class="card-head">
+              <span class="card-index">01 / NOW SHIPPING</span>
+              <span class="card-role">产品 × 算法 × 全栈</span>
+              <span class="card-status is-beta"><i></i>冲刺中 · 11/08 前上线</span>
+            </div>
+            <div class="card-body">
+              <div class="card-copy">
+                <h3 class="card-title">狗子画像</h3>
+                <p class="card-sub"><span class="sub-en">Gouzi Portrait</span><span class="sub-cn">个人基线画像</span></p>
+                <p class="card-desc">不撮合、不配对、不算命，只把「你是什么配置」讲清楚。30 题测出 10 个维度的现实基线，再对上你对伴侣的期待，找出最大缺口——先看清自己，再谈关系。</p>
+                <ul class="card-points">
+                  <li>30 题基线 + 12 题期待 + 8 题依恋 → 十维打分、7 档等级</li>
+                  <li>四条产品线：完整报告 ¥1.9 / ¥6.9 / ¥9.9、判断模式 ¥6.9、16 型趣测与画像实验室免费</li>
+                  <li>22 个测试套件 / 2343 条断言；虚拟支付 2.0，升级补差全额抵扣</li>
+                </ul>
+                <div class="card-entry">
+                  <span class="entry-label">试用入口</span>
+                  <span class="entry-path">微信搜一搜「狗子画像」</span>
+                  <button type="button" class="entry-copy" data-copy="狗子画像">复制名称</button>
+                </div>
+              </div>
+              <div class="card-mock" aria-hidden="true">
+                <div class="mock-phone">
+                  <div class="mp-top">
+                    <span class="mp-tag">基线测评</span>
+                    <span class="mp-step">07 / 30</span>
+                  </div>
+                  <p class="mp-q">冲突发生时，你更希望对方怎么做？</p>
+                  <div class="mp-opts">
+                    <span class="mp-opt">A · 先各自冷静</span>
+                    <span class="mp-opt on">B · 当场把话说清</span>
+                    <span class="mp-opt">C · 主动先认错</span>
+                  </div>
+                  <div class="mp-meters">
+                    <div class="mp-meter"><span>现实</span><i style="--v:72%"></i></div>
+                    <div class="mp-meter"><span>期待</span><i style="--v:88%"></i></div>
+                    <div class="mp-meter"><span>差距</span><i style="--v:16%"></i></div>
+                  </div>
+                </div>
+                <p class="mock-caption">30 题 → 10 维度 → 7 档等级</p>
+              </div>
+            </div>
+            <div class="card-foot">
+              <div class="card-chips">
+                <span class="chip">微信小程序</span>
+                <span class="chip">云开发</span>
+                <span class="chip">虚拟支付 2.0</span>
+              </div>
+              <button type="button" class="card-cta" onclick="openArticle(7)">看设计取舍<b>→</b></button>
+            </div>
+          </article>
+
+          <!-- 02 网感实验室 · 辅助证明 -->
+          <article class="bento-card half reveal">
+            <div class="card-head">
+              <span class="card-index">02</span>
+              <span class="card-role">产品 × 全栈</span>
+              <span class="card-status is-live"><i></i>已上线</span>
+            </div>
+            <div class="card-body">
+              <div class="card-copy">
+                <h3 class="card-title">网感实验室</h3>
+                <p class="card-sub"><span class="sub-en">Content Sense Lab</span><span class="sub-cn">内容判断训练</span></p>
+                <p class="card-desc">说不清「为什么这条行、那条不行」，网感就永远只能靠感觉。把选题、标题、结构、平台适配拆成能练、能解释、能复盘的判断题。</p>
+                <ul class="card-points">
+                  <li>360 道情境题库已上线，六维能力反馈</li>
+                  <li>微信小程序 + Vue 3 后台 + Node API</li>
+                  <li>已产生真实付费订单（小程序虚拟支付，2 笔）</li>
+                </ul>
+              </div>
+              <div class="card-mock" aria-hidden="true">
+                <div class="mock-tasks">
+                  <div class="mt-head"><span>六维能力反馈</span><b>360 题</b></div>
+                  <div class="mt-bar"><i style="--v:82%"></i></div>
+                  <div class="mt-row is-done"><i>✓</i><span>选题判断</span><em>82</em></div>
+                  <div class="mt-row is-done"><i>✓</i><span>标题表达</span><em>64</em></div>
+                  <div class="mt-row"><i></i><span>结构完整度</span><em>57</em></div>
+                  <div class="mt-foot"><span>微信小程序 · 已上线</span><b>2 笔付费</b></div>
+                </div>
+                <p class="mock-caption">题库与判分 · 已上线版本</p>
+              </div>
+            </div>
+            <div class="card-foot">
+              <div class="card-chips">
+                <span class="chip">微信小程序</span>
+                <span class="chip">Vue 3</span>
+                <span class="chip">Node API</span>
+              </div>
+              <a class="card-cta" href="https://hongshang.pro/wanggan/" target="_blank" rel="noopener">打开后台<b>↗</b></a>
+            </div>
+          </article>
+
+          <!-- 03 第一桶金 · 辅助证明 -->
+          <article class="bento-card half reveal">
+            <div class="card-head">
+              <span class="card-index">03</span>
+              <span class="card-role">产品 × 交互</span>
+              <span class="card-status is-beta"><i></i>联调中 · 支付待验</span>
+            </div>
+            <div class="card-body">
+              <div class="card-copy">
+                <h3 class="card-title">第一桶金</h3>
+                <p class="card-sub"><span class="sub-en">First Bucket</span><span class="sub-cn">财务动作卡</span></p>
+                <p class="card-desc">不讲理财鸡汤。用 20 张动作卡，把「存下第一笔钱」拆成今天就能做完的动作；完成一张，才解锁一个真实数字。</p>
+                <ul class="card-points">
+                  <li>20 张动作卡：记账 → 砍支出 → 定价 → 第一次报价</li>
+                  <li>数字面板不给假激励，做完才算得出净资产</li>
+                  <li>当前状态：双端联调中，支付链路尚未验收</li>
+                </ul>
+              </div>
+              <div class="card-mock" aria-hidden="true">
+                <div class="mock-tasks">
+                  <div class="mt-head"><span>今天 3 件事</span><b>7 / 20</b></div>
+                  <div class="mt-bar"><i style="--v:35%"></i></div>
+                  <div class="mt-row is-done"><i>✓</i><span>关掉 3 张自动续费</span><em>+¥312</em></div>
+                  <div class="mt-row is-done"><i>✓</i><span>算一次真实时薪</span><em>¥86 / h</em></div>
+                  <div class="mt-row"><i></i><span>给技能报第一个价</span><em>待做</em></div>
+                  <div class="mt-foot"><span>净资产 · 已解锁</span><b>¥128,400</b></div>
+                </div>
+                <p class="mock-caption">动作卡 · 已完成 7 / 20</p>
+              </div>
+            </div>
+            <div class="card-foot">
+              <div class="card-chips">
+                <span class="chip">微信小程序</span>
+                <span class="chip">云开发</span>
+                <span class="chip">离线可用</span>
+              </div>
+              <button type="button" class="card-cta" onclick="openArticle(6)">看动作卡设计<b>→</b></button>
+            </div>
+          </article>
         </div>
 
-        <!-- Three Things -->
-        <div class="three-things">
-          <div class="thing-card">
-            <div class="thing-number">01</div>
-            <h3>构建 AI Agent 系统</h3>
-            <p>AI 正在改变工作的结构。很多重复性的工作正在被自动化系统替代。</p>
-            <p>我正在探索：</p>
-            <ul class="thing-list">
-              <li>AI Agent</li>
-              <li>自动化工作流</li>
-              <li>AI 原生生产系统</li>
+        <div class="projects-outro reveal">
+          <div class="outro-copy">
+            <strong>上面这套做法，也可以直接用在你的业务上。</strong>
+            <p>我现在的服务就三条线：电商售后自动化、小红书 / 微信 SEO + GEO、电商 Listing。先用两周做出第一个能点开的版本，再拿真实行为决定要不要继续投。</p>
+          </div>
+          <a href="#work" class="outro-btn">看三条服务线 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section id="impact">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>02</em>IMPACT</p>
+          <h2 class="sec-title">可核对的数字</h2>
+          <p class="sec-lead">这里只放能被后台、包体和测试报告核对的数字。没有客户名、没有统计口径的倍数，宁可不写。</p>
+        </header>
+
+        <div class="impact-grid">
+          <div class="impact-card reveal">
+            <div class="impact-number">360</div>
+            <h3>道情境题 · 已上线</h3>
+            <p>网感实验室的题库规模，微信小程序在售版本。选题、标题、结构、平台适配拆成可评分的判断题，六维反馈。</p>
+            <ul class="impact-list">
+              <li>口径：小程序在售题库总量</li>
+              <li>时间：截至 2026-11-07</li>
+              <li>配套：Vue 3 后台 + Node API</li>
             </ul>
-            <p>未来的工作方式可能更像"系统管理"，而不是"劳动"。</p>
           </div>
-
-          <div class="thing-card">
-            <div class="thing-number">02</div>
-            <h3>开发同频OS</h3>
-            <p>同频OS 是一个正在开发中的 AI 产品。</p>
-            <p>它试图回答一个简单却复杂的问题：<br>为什么有些人可以迅速理解彼此，而有些人始终无法建立真正的连接。</p>
-            <p>这个项目尝试通过：</p>
-            <ul class="thing-list">
-              <li>关系模型</li>
-              <li>心理结构</li>
-              <li>AI 推理</li>
+          <div class="impact-card reveal">
+            <div class="impact-number">2</div>
+            <h3>笔真实付费订单</h3>
+            <p>不做「内测赠送」充数。这两笔是小程序虚拟支付里真实的付费订单，也是目前唯一对外可称的付费数据。</p>
+            <ul class="impact-list">
+              <li>口径：虚拟支付 2.0 成功订单</li>
+              <li>时间：截至 2026-11-07</li>
+              <li>不含内测赠送与权益直发</li>
             </ul>
-            <p>探索人与人之间的共鸣机制。</p>
           </div>
+          <div class="impact-card reveal">
+            <div class="impact-number">2343</div>
+            <h3>条自动化断言</h3>
+            <p>狗子画像 v4.1 的质量基线：22 个测试套件，覆盖计分、定价、云函数健康、支付幂等、文案禁令与打包配置。</p>
+            <ul class="impact-list">
+              <li>口径：npm test 全量断言数</li>
+              <li>覆盖：计分 / 定价 / 支付 / 路由</li>
+              <li>主包 0.88 MB · 9 页 + 3 分包</li>
+            </ul>
+          </div>
+        </div>
 
-          <div class="thing-card">
-            <div class="thing-number">03</div>
-            <h3>探索 AI 时代的个人创业</h3>
-            <p>AI 正在降低创业门槛。</p>
-            <p>一个人，借助 AI，可以完成过去一个团队才能完成的工作。</p>
-            <p>我正在实践一种新的创业模型：<br><strong>AI + 个人能力</strong></p>
-            <p>构建：内容系统 · 产品原型 · 商业闭环</p>
+        <p class="impact-quote reveal">数字只写能核对的，承诺只给做得到的。<strong>剩下的交给交付本身。</strong></p>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section id="journey">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>03</em>JOURNEY</p>
+          <h2 class="sec-title">实战履历</h2>
+        </header>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-title">至 2025 年 · 十年电商与品牌一线</div>
+            <div class="timeline-content">计算机科学本科，从一线做到电商运营总监与品牌顾问。完整跑过公域获客、转化漏斗、供应链协同与私域复购，主导多个品牌的全盘运营与团队管理。</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-title">连续创业 · 科技与品牌策略机构</div>
+            <div class="timeline-content">在不同周期与垂类里反复验证高杠杆、轻资产的数字化商业模型，也在这里看清一件事：增长瓶颈多数不是人的问题，是工作流的问题。</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-title">2026.08 · AI 一人公司正式开跑</div>
+            <div class="timeline-content">从「狗子画像」MVP 开始，一个人完成产品定义、算法设计、全栈研发与支付接入。到 2026-11 做到 v4.1：四条产品线、主包 9 页 + 3 分包、22 个测试套件 2343 条断言。</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-title">2026.10 · 网感实验室上线</div>
+            <div class="timeline-content">360 道情境题库进微信小程序，配套 Vue 3 管理后台与 Node API，出题与解析由 AI Skill 承担、答案由人拍死。已产生真实付费订单。</div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-title">2026.11 · 服务线定稿：WorkBuddy 3 条线</div>
+            <div class="timeline-content">把跑通的系统封装成可交付服务：电商售后自动化、小红书 / 微信 SEO + GEO、电商 Listing。同期上线「红商助手」（hongshang.pro），把小红书内容生产做成可跑的工具。</div>
+            <div class="timeline-quote">
+              <p>技术演进的终极意义，不是把人变成更高效的机器，而是帮人赎回最宝贵的时间，去关注真正重要的人与事。</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-indicator-mouse">
-        <div class="scroll-indicator-wheel"></div>
-      </div>
-      <p class="scroll-indicator-text">Scroll</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
+    <!-- Writing -->
+    <section id="writing">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>04</em>WRITING</p>
+          <h2 class="sec-title">深度思考</h2>
+          <p class="sec-lead">长期实战复盘与方法论沉淀。关于 AI 一人公司（OPC）· 商业系统架构 · 人际共振算法。</p>
+        </header>
 
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-icon">🔗</div>
-          <h3 class="project-name">同频OS</h3>
-          <span class="project-badge">AI 关系匹配系统</span>
-          <p class="project-desc">通过算法与心理模型，探索人与人之间的共鸣结构。这是一个关于关系与理解的长期实验。</p>
-          <div class="project-detail">
-            <p><strong>核心探索：</strong></p>
-            <p>• 关系结构的数学建模</p>
-            <p>• 心理共鸣的量化分析</p>
-            <p>• AI 辅助的人际理解</p>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-icon">✨</div>
-          <h3 class="project-name">AI 内容生产系统</h3>
-          <span class="project-badge">内容系统化生产</span>
-          <p class="project-desc">AI 正在改变内容行业。内容生产正在从"手工创作"转向"系统化生产"。</p>
-          <div class="project-detail">
-            <p><strong>系统构成：</strong></p>
-            <p>• AI 辅助创意生成</p>
-            <p>• 自动化内容分发</p>
-            <p>• 个人品牌自动化运营</p>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-icon">🧠</div>
-          <h3 class="project-name">AI 决策模型</h3>
-          <span class="project-badge">传统智慧现代化</span>
-          <p class="project-desc">很多传统智慧，其实是复杂系统的经验模型。例如：命理、风水、东方哲学。</p>
-          <div class="project-detail">
-            <p><strong>研究方向：</strong></p>
-            <p>• 传统智慧的结构化</p>
-            <p>• 现代技术重新理解</p>
-            <p>• 发展新的决策工具</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Journey Section -->
-  <section class="journey" id="journey">
-    <div class="container">
-      <h2 class="section-title">Journey</h2>
-      
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-title">互联网行业实践</div>
-          <div class="timeline-content">早期在互联网与电商行业工作，积累了丰富的商业实践经验。</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-title">电商运营管理</div>
-          <div class="timeline-content">担任电商运营总监，负责团队管理和业务运营。</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-title">创业探索</div>
-          <div class="timeline-content">参与多次创业项目，探索商业模式和产品创新。</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-title">人生阶段的重大变化</div>
-          <div class="timeline-content">成为单亲父亲，重新思考生活与工作的平衡。</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-title">用 AI 重建生活与工作系统</div>
-          <div class="timeline-content">在重新整理生活与工作的过程中，开始大量使用 AI，逐渐意识到 AI 不仅仅是工具，更像一种新的操作系统。</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-title">持续创业与产品开发</div>
-          <div class="timeline-content">开始将 AI 深度融入创业实践，开发 AI 产品和工具。</div>
-
-          <div class="timeline-quote">
-            <p>很多时候，技术的发展并不是为了替代人。而是让人重新思考：什么才是最重要的事情。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Writing Section -->
-  <section class="writing" id="writing">
-    <div class="container">
-      <h2 class="section-title">Writing</h2>
-      
-      <p class="writing-intro">这里记录一些长期思考。关于：AI · 商业 · 人与人之间的关系</p>
-      
-      <div class="writing-list">
-        <div class="article-card" onclick="openArticle(1)">
-          <div class="article-header">
+        <div class="writing-list">
+          <div class="article-card reveal" onclick="openArticle(1)" role="button" tabindex="0" aria-label="阅读文章：AI 时代的一人公司">
             <div class="article-number">01</div>
             <div class="article-info">
-              <h3 class="article-title">AI 时代的一人公司</h3>
-              <span class="article-category">商业 · AI</span>
+              <h3 class="article-title">AI 时代的一人公司（OPC）：如何用系统替代 10 人团队？</h3>
+              <div class="article-meta">
+                <span class="article-category">商业 · OPC 架构</span>
+              </div>
+              <p class="article-excerpt">传统创业是「先招人搭班子，再找业务养团队」，在今天这往往意味着高昂的试错成本。关键问题已经从「我能亲手做多少事」，彻底变成了「我能用标准化的 SOP 驱动多少个 AI 专家协同作战」。</p>
             </div>
+            <span class="article-arrow" aria-hidden="true">→</span>
           </div>
-          <p class="article-excerpt">过去，一个人的力量是有限的。你需要在内容、运营、技术、管理之间不断切换，常常力不从心。但在 AI 时代，这种限制正在被打破。</p>
-          <p class="article-excerpt">AI 不是简单的工具，它更像是一种能力放大器。一个具备核心能力的人，配合恰当的 AI 工具链，可以完成过去一个小团队才能完成的工作。这不是神话，而是正在发生的现实。</p>
-          <div class="article-read-more">
-            <span>阅读全文</span>
-            <span>→</span>
-          </div>
-        </div>
 
-        <div class="article-card" onclick="openArticle(2)">
-          <div class="article-header">
+          <div class="article-card reveal" onclick="openArticle(2)" role="button" tabindex="0" aria-label="阅读文章：人际共振机制的量化建模">
             <div class="article-number">02</div>
             <div class="article-info">
-              <h3 class="article-title">为什么人与人会同频</h3>
-              <span class="article-category">关系 · 心理</span>
+              <h3 class="article-title">为什么人与人会同频？论人际共振机制的量化建模</h3>
+              <div class="article-meta">
+                <span class="article-category">产品 · 关系算法</span>
+              </div>
+              <p class="article-excerpt">有些人初次见面就能迅速建立深度信任，有些人相处多年却始终在每个决策节点上互相消耗。同频不是玄学，而是两个复杂信息结构在多维空间上的高维向量匹配过程。</p>
             </div>
+            <span class="article-arrow" aria-hidden="true">→</span>
           </div>
-          <p class="article-excerpt">有些人第一次见面就像认识了很久，有些人相处多年却始终难以理解。这种现象背后，是否存在着某种可以被量化的规律？</p>
-          <p class="article-excerpt">同频不是玄学，它可能是一种复杂的信息匹配过程。我们的经历、价值观、思维模式，构成了一个独特的"信息结构"。当两个信息结构在多个维度上形成共振时，就是所谓的"同频"。</p>
-          <div class="article-read-more">
-            <span>阅读全文</span>
-            <span>→</span>
-          </div>
-        </div>
 
-        <div class="article-card" onclick="openArticle(3)">
-          <div class="article-header">
+          <div class="article-card reveal" onclick="openArticle(3)" role="button" tabindex="0" aria-label="阅读文章：为什么接入大模型却没有降本增效">
             <div class="article-number">03</div>
             <div class="article-info">
-              <h3 class="article-title">技术如何改变个人创业</h3>
-              <span class="article-category">技术 · 商业</span>
+              <h3 class="article-title">为什么 90% 的团队接入了大模型，却依然没有实现降本增效？</h3>
+              <div class="article-meta">
+                <span class="article-category">电商 · 企业提效</span>
+              </div>
+              <p class="article-excerpt">给员工买几个账号、发一份通用提示词大全，不叫 AI 转型。真正的 AI 生产力，必须建立在对顶级操盘手隐性经验的显性化拆解，以及对业务上下文的精准控制之上。</p>
             </div>
+            <span class="article-arrow" aria-hidden="true">→</span>
           </div>
-          <p class="article-excerpt">个人创业的本质，是在资源有限的情况下，创造商业价值。技术一直在降低这个门槛，但从未像今天这样彻底。</p>
-          <p class="article-excerpt">AI 时代的创业不再是单打独斗，而是"人 + AI"的协同。你不再需要什么都会，只需要学会如何与 AI 协作。关键问题从"我能做什么"变成了"我能组织 AI 做什么"。</p>
-          <div class="article-read-more">
-            <span>阅读全文</span>
-            <span>→</span>
-          </div>
-        </div>
 
-        <div class="article-card" onclick="openArticle(4)">
-          <div class="article-header">
+          <div class="article-card reveal" onclick="openArticle(4)" role="button" tabindex="0" aria-label="阅读文章：按认知带宽分配任务">
             <div class="article-number">04</div>
             <div class="article-info">
-              <h3 class="article-title">AI 是否会改变人与人的理解方式</h3>
-              <span class="article-category">AI · 哲学</span>
+              <h3 class="article-title">按认知带宽分配任务：一个全栈开发者的反内耗法则</h3>
+              <div class="article-meta">
+                <span class="article-category">认知 · 精力管理</span>
+              </div>
+              <p class="article-excerpt">当工具每天都在剧烈迭代，盲目延长工时只会吞噬创造力。把每天黄金 3 小时的巅峰心智带宽留给架构设计与深度决策，而在疲惫期让自动化脚本接管一切日常运营。</p>
             </div>
-          </div>
-          <p class="article-excerpt">我们常说 AI 没有情感，但这是否意味着 AI 无法帮助我们理解情感？事实上，AI 正在成为一面镜子，通过模式识别和数据，让我们看到人与人之间那些细微的联系。</p>
-          <p class="article-excerpt">AI 不会替代人类的理解，但它可以扩展理解的边界。当我们学会了用 AI 的视角观察关系，或许能发现那些藏在日常之下的深刻规律。</p>
-          <div class="article-read-more">
-            <span>阅读全文</span>
-            <span>→</span>
+            <span class="article-arrow" aria-hidden="true">→</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Now Section -->
-  <section class="now" id="now">
-    <div class="container">
-      <h2 class="section-title">Now</h2>
-      
-      <div class="now-section">
-        <h3 class="now-title">最近我主要在做：</h3>
-        <ul class="now-list">
-          <li>开发 同频OS</li>
-          <li>研究 AI Agent 与自动化系统</li>
-          <li>记录 AI 时代的创业实践</li>
-        </ul>
-      </div>
+    <!-- Now -->
+    <section id="now">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>05</em>NOW</p>
+          <h2 class="sec-title">当下</h2>
+        </header>
 
-      <div class="now-section">
-        <h3 class="now-title">同时也在阅读：</h3>
-        <ul class="now-list">
-          <li>复杂系统</li>
-          <li>心理学</li>
-          <li>技术哲学</li>
-        </ul>
-      </div>
-
-      <div class="highlight-box">
-        <p>生活中最重要的一部分：陪伴女儿成长。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work With Me Section -->
-  <section class="work-with-me" id="work">
-    <div class="container">
-      <h2 class="section-title">Work With Me</h2>
-      
-      <p class="work-intro">如果你正在探索 AI 产品、AI 内容系统、个人品牌、商业模式，欢迎交流合作。</p>
-      
-      <ul class="work-list">
-        <li>AI 产品的想法或项目，需要技术实现或产品咨询</li>
-        <li>希望构建 AI 内容生产系统，提升内容产出效率</li>
-        <li>正在打造个人品牌，需要战略规划和系统化运营</li>
-        <li>探索 AI 时代的创业模式，需要实践经验分享</li>
-      </ul>
-
-      <div class="contact-cta">
-        <h3>期待与你的交流</h3>
-        <div class="contact-links">
-          <a href="mailto:1988map@gmail.com" class="contact-btn">
-            <span>✉️</span>
-            <span>Email</span>
-          </a>
-          <a href="javascript:void(0)" class="contact-btn outline" onclick="showWeChat()" id="wechatBtn">
-            <span>💬</span>
-            <span>WeChat</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
-    <div class="container">
-      <h2 class="section-title">About</h2>
-      
-      <div class="about-grid">
-        <div class="about-content">
-          <div class="about-section">
-            <h4>关于我</h4>
-            <div class="about-text">
-              <p>我是马泓宸。一名连续创业者。</p>
-              <p>过去十多年，我长期在互联网与电商行业工作，也参与过多个创业项目。</p>
-            </div>
+        <div class="now-grid">
+          <div class="now-card-box reveal">
+            <h3>2026-10-26 → 11-08：All in 狗子画像</h3>
+            <ul class="now-list">
+              <li><strong>主线 · 狗子画像上线冲刺</strong>：支付链路、邀请合盘、分享卡与首页分流收口，11 月 8 日前发版</li>
+              <li><strong>网感实验室转常态迭代</strong>：360 题已上线，接下来只做题库扩充与判分口径优化，不再占用冲刺时间</li>
+              <li><strong>同频OS 暂停对外推进</strong>：它和狗子画像在同一条赛道的前后段，同一时间推两个产品等于自己跟自己抢人</li>
+              <li><strong>方法论沉淀</strong>：继续写个人商业重构纪实《触底反弹》</li>
+            </ul>
           </div>
-
-          <div class="about-section">
-            <h4>商业实践让我逐渐意识到</h4>
-            <div class="about-text">
-              <p>很多商业问题，本质上是<strong>系统问题</strong>。</p>
-            </div>
-          </div>
-
-          <div class="about-section">
-            <h4>一个转折</h4>
-            <div class="about-text">
-              <p>后来人生发生了一些变化。我成为了一名单亲父亲。</p>
-              <p>在重新整理生活与工作的过程中，我开始大量使用 AI。</p>
-              <p>AI 帮助我重新组织：时间 · 信息 · 生产力</p>
-            </div>
-          </div>
-
-          <div class="about-section">
-            <h4>慢慢地，我开始意识到</h4>
-            <div class="about-text">
-              <p>AI 不是简单的工具。</p>
-              <p>它更像一种新的操作系统。</p>
-            </div>
+          <div class="anchor-box reveal">
+            <h3>长期深入研究的领域</h3>
+            <ul class="now-list">
+              <li>多智能体协同架构（Multi-Agent Systems）与商业工作流自动化</li>
+              <li>复杂系统科学、行为心理学与传统时空决策模型</li>
+              <li>AI 一人公司（OPC）的高杠杆商业闭环实践</li>
+            </ul>
           </div>
         </div>
 
-        <div class="about-content">
-          <div class="about-section">
-            <h4>我现在关注的事情</h4>
-            <div class="about-text">
-              <p>• AI 如何改变工作方式</p>
-              <p>• AI 如何改变创业模式</p>
-              <p>• AI 是否能够帮助人更好地理解彼此</p>
-            </div>
-          </div>
+        <div class="belief-box reveal">
+          <p>生活中最重要的锚点：常驻昆明，留出高质量的时间陪伴女儿成长，<br>践行<strong>「工作极简、生活丰盈」</strong>的数字创业方式。</p>
+        </div>
+      </div>
+    </section>
 
-          <div class="about-section">
-            <h4>我正在尝试把这些问题</h4>
-            <div class="about-text">
-              <p>变成真实的产品。</p>
-            </div>
-          </div>
+    <!-- Work With Me -->
+    <section id="work">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>06</em>WORK WITH ME</p>
+          <h2 class="sec-title">三条服务线</h2>
+          <p class="sec-lead">不做全品类接单。只做我手上已经跑通系统的三件事：把重复发生的活变成不用再管的系统。</p>
+        </header>
 
-          <div class="about-section">
-            <h4>我相信</h4>
-            <div class="about-text">
-              <p>技术的发展，最终会回到一个问题：<strong>人如何更好地生活</strong>。</p>
-            </div>
+        <div class="work-grid">
+          <div class="work-item reveal">
+            <h3>① 电商售后自动化</h3>
+            <p>退换货、工单、话术、异常单识别做成 Agent 工作流。客服口径统一，人只处理真正需要判断的那 5%。</p>
+            <p class="work-tag">跨境售后 · 工单分流 · 话术库</p>
           </div>
+          <div class="work-item reveal">
+            <h3>② 小红书 / 微信 SEO + GEO</h3>
+            <p>关键词研究、竞品内容拆解、标题改写、AI 搜索可见度探针与复测。内容发出去能不能被搜到，做完有一份可核对的审计报告。</p>
+            <p class="work-tag">关键词 · 内容审计 · AI 搜索可见度</p>
+          </div>
+          <div class="work-item reveal">
+            <h3>③ 电商 Listing</h3>
+            <p>标题、五点、详情、类目与关键词的一致性做成模板化工具包，上新不再靠「憋」，改版有据可依。</p>
+            <p class="work-tag">Listing 工具包 · 模板 · 一致性校验</p>
+          </div>
+        </div>
 
-          <div class="belief-box">
-            <p>所以在 AI 时代，我依然相信：<br><strong>技术向上，情感向下。</strong></p>
+        <div class="contact-block reveal">
+          <h3>已经能点开的东西</h3>
+          <p>不用预约也能先看看：两个在跑的产品，和一个技能市场。</p>
+          <div class="contact-links">
+            <a href="https://hongshang.pro/" target="_blank" rel="noopener" class="contact-btn">
+              <span class="dot mail" aria-hidden="true"></span>
+              <span>红商助手 · 小红书爆款笔记生成器 ↗</span>
+            </a>
+            <a href="https://hongshang.pro/wanggan/" target="_blank" rel="noopener" class="contact-btn">
+              <span class="dot wechat" aria-hidden="true"></span>
+              <span>网感实验室 · 管理后台 ↗</span>
+            </a>
+            <a href="https://www.workbuddy.cn/" target="_blank" rel="noopener" class="contact-btn">
+              <span class="dot mail" aria-hidden="true"></span>
+              <span>WorkBuddy · 技能与专家市场 ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-block reveal">
+          <h3>联系我</h3>
+          <p>邮件或微信，都会认真回复。</p>
+          <div class="contact-links">
+            <a href="mailto:1988map@gmail.com" class="contact-btn">
+              <span class="dot mail" aria-hidden="true"></span>
+              <span>1988map@gmail.com</span>
+            </a>
+            <button type="button" class="contact-btn" id="wechatBtn" onclick="showWeChat()">
+              <span class="dot wechat" aria-hidden="true"></span>
+              <span id="wechatText">微信：max1100011（点击复制）</span>
+            </button>
+            <button type="button" class="contact-btn" data-copy="若腾｜AI一人创业">
+              <span class="dot mail" aria-hidden="true"></span>
+              <span>抖音：若腾｜AI一人创业（点击复制）</span>
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <header class="sec-head reveal">
+          <p class="sec-eyebrow"><em>07</em>ABOUT</p>
+          <h2 class="sec-title">关于我</h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-col">
+            <div class="about-block reveal">
+              <h4>关于我</h4>
+              <p>我是<strong>若腾</strong>（本名马若腾 / Adrian），一名实战派连续创业者、全栈 AI Agent 架构师。</p>
+              <p>计算机科班出身，过去十多年长期在互联网、电商运营与品牌策略一线摸爬滚打，曾任电商运营总监并主导多个创业项目。</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>商业实战带给我的底层认知</h4>
+              <p>绝大多数业务增长乏力与团队内耗，本质上都不是人的问题，而是<strong>底层系统与工作流架构的问题</strong>。</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>一次彻底的系统重构</h4>
+              <p>在经历人生阶段转折、成为独立抚养女儿的单亲父亲后，我对「时间价值」与「抗风险能力」有了全新的敬畏。</p>
+              <p>在重新整理生活与商业版图的过程中，我用 AI 彻底重构了个人操作系统：<strong>时间分配 · 信息过滤 · 自动化生产力</strong>。</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>我的实践哲学</h4>
+              <p>AI 绝非简单的聊天玩具，它是超级个体的<strong>新商业操作系统</strong>。</p>
+            </div>
+          </div>
+          <div class="about-col">
+            <div class="about-block reveal">
+              <h4>在研与实验（不在首屏）</h4>
+              <p>• <strong>同频OS</strong>：关系兼容度模型与冲突复盘，与狗子画像同赛道前后段，暂缓对外推进</p>
+              <p>• <strong>潜台词</strong>：资料矛盾检测，把对方说过的话拆成可核对的提问清单</p>
+              <p>• <strong>红商引擎</strong>：爆款逻辑编译成「选题 → 生成 → 分发」工作流（红商助手的底层）</p>
+              <p>• <strong>虚拟董事会</strong>：五个角色常驻 Agent，对高风险决策做交叉质询</p>
+              <p>• <strong>OC Ferry</strong>：本地模型网关，把免费模型池接进日常开发流</p>
+              <p>• <strong>Jev 桌面操控</strong>：无障碍树 + 决策环路，UIA 抓取 → 候选编号 → 判定 → 执行</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>我持续探索的核心命题</h4>
+              <p>• <strong>OPC（一人公司）闭环</strong>：如何以极简的数字矩阵替代臃肿的传统团队</p>
+              <p>• <strong>业务工作流工程化</strong>：如何将顶尖操盘手的隐性经验转化为可复用的 Agent</p>
+              <p>• <strong>人际理解与同频共振</strong>：AI 如何作为一面镜子，帮人看清关系与自我</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>我的交付准则</h4>
+              <p>拒绝脱离商业本质的技术自嗨，把经过实战验证的思考，封装成<strong>真正能跑通闭环、能带来真实增长的产品与工具</strong>。</p>
+            </div>
+            <div class="about-block reveal">
+              <h4>我始终相信</h4>
+              <p>一切技术与效率的演进，最终都指向同一个终点：<strong>让人夺回生活的自主权</strong>。</p>
+            </div>
+            <div class="belief-box reveal">
+              <p>所以在 AI 狂飙的时代，我依然笃定：<br><strong>技术不断向上，人始终向内。</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      <div class="posts-store">
+        <article class="post-src" id="post-1" data-title="AI 时代的一人公司（OPC）：如何用系统替代 10 人团队？" data-category="商业 · OPC 架构">
+          <h3 class="post-src-title">AI 时代的一人公司（OPC）：如何用系统替代 10 人团队？</h3>
+          <p class="post-src-cat">商业 · OPC 架构</p>
+        <p>过去十年做电商和创业项目，最沉重的成本往往不是流量成本，而是「组织沟通与管理内耗」。当你想测试一个新业务，传统路径是招策划、招设计、招运营、招开发——还没验证商业闭环，每个月几万甚至十几万的固定人力成本已经先烧出去了。</p>
+        <h3>从「执行工」到「系统架构师」</h3>
+        <p>但在 AI 原生时代，这套逻辑被彻底改写了。所谓<strong>「AI 一人公司（One-Person Company, OPC）」</strong>，绝不是一个人没日没夜地干十个人的苦力活，而是把你自己从一线机械劳动中抽离出来，升级为「系统架构师」与「指挥官」。</p>
+        <h3>多智能体协同的真实工作流</h3>
+        <p>在我的日常工作流中，一个完整项目的推进是这样运转的：由 5 个不同视角专家 Agent 组成的「虚拟董事会」负责前期的商业方案压力测试；Claude Code 与 Cursor 承接 85% 以上的全栈代码编写；定制化的内容工业化引擎负责将核心观点衍生为适配小红书、抖音与私域的多模态内容。</p>
+        <h3>未来的核心壁垒</h3>
+        <p>当你的商业认知与操盘经验被结构化为标准 SOP 与高精度的 Prompt / Skill，你就拥有了一支 7×24 小时不知疲倦、零内耗的数字团队。未来的超级个体，拼的不是谁更肝，而是谁手里握着更强大的自动化工作流资产。</p>
+        </article>
+        <article class="post-src" id="post-2" data-title="为什么人与人会同频？论人际共振机制的量化建模" data-category="产品 · 关系算法">
+          <h3 class="post-src-title">为什么人与人会同频？论人际共振机制的量化建模</h3>
+          <p class="post-src-cat">产品 · 关系算法</p>
+        <p>我们在开发「同频OS (Resonance)」之初，一直在试图用工程与系统论的视角回答一个问题：为什么有的人初次见面就能迅速建立深度信任，而有的人哪怕朝夕相处，依然在每一个决策节点上互相消耗？</p>
+        <h3>人作为复杂动态系统的三层参数</h3>
+        <p>如果把人看作一个复杂的动态信息系统，每个人都带有三层核心参数：底层的原生性格与能量结构、中层的认知范式与价值排序、以及表层的沟通习惯与情绪触发点。</p>
+        <h3>超越表层标签的向量匹配</h3>
+        <p>传统社交或协同匹配只看表层标签（行业、学历、爱好），这就像只看两台电脑的外壳颜色是否搭配，却完全忽略了它们底层的操作系统是否兼容。当两个信息结构在底层价值观与能量节奏上形成共振，才是真正意义上的「同频」。</p>
+        <h3>AI 辅助的关系推演</h3>
+        <p>通过结合行为心理学模型、传统复杂系统经验以及 AI 多智能体推理，我们可以提前模拟两个个体在面对压力、利益分配与亲密关系冲突时的交互反馈，让「找到同频者」从撞大运变成可被洞察的科学实验。</p>
+        </article>
+        <article class="post-src" id="post-3" data-title="为什么 90% 的团队接入了大模型，却依然没有实现降本增效？" data-category="电商 · 企业提效">
+          <h3 class="post-src-title">为什么 90% 的团队接入了大模型，却依然没有实现降本增效？</h3>
+          <p class="post-src-cat">电商 · 企业提效</p>
+        <p>在给不少电商和内容团队做咨询时，我发现一个普遍的怪象：老板花钱给全员配了大模型账号，甚至买了几十 G 的「提示词大全」，但三个月过去，团队产出效率几乎没有变化，甚至因为生成的文案太有「AI 塑料味」，导致账号转化率不升反降。</p>
+        <h3>病根：用「许愿池思维」代替「业务工程拆解」</h3>
+        <p>直接对 AI 说「帮我写一篇卖女装的小红书爆款文案」，得到的必然是正确的废话。因为大模型没有你这批货的痛点数据，不懂你目标客群的隐秘心理，更没有你过去跑出来的爆款钩子结构。</p>
+        <h3>企业级 AI 落地的三步法则</h3>
+        <p>真正的企业级 AI 落地，必须经历三步：第一，将销冠或顶级操盘手的隐性经验，拆解为颗粒度极细的显性步骤（Workflow Breakdown）；第二，注入品牌专属语料库与反面清单（负向约束，砍掉 AI 腔调）；第三，通过多步推理让 AI 先做策略洞察，再做多透镜发散（如反常识切入、数据实证、个人故事钩子），最后执行质检。</p>
+        <p>没有业务深度的 AI 只是玩具；结合了严密商业 SOP 的 AI，才是真正的增长引擎。</p>
+        </article>
+        <article class="post-src" id="post-4" data-title="按认知带宽分配任务：一个全栈开发者的反内耗法则" data-category="认知 · 精力管理">
+          <h3 class="post-src-title">按认知带宽分配任务：一个全栈开发者的反内耗法则</h3>
+          <p class="post-src-cat">认知 · 精力管理</p>
+        <p>独立操盘多个项目、写代码、做业务咨询，同时还要留出充足的时间陪伴女儿成长——很多人问我如何平衡高密度产出与生活。答案很简单：<strong>永远不要在大脑疲惫的时候做高认知决策，也永远不要在精力巅峰期处理低价值的行政琐事。</strong></p>
+        <h3>传统待办清单（To-Do List）的陷阱</h3>
+        <p>大多数人的任务清单是单纯按「截止日期」排序的，这非常反人性。当你在下午三点脑力枯竭时硬啃复杂的系统架构，不仅效率极低，还会产生巨大的挫败感与焦虑。</p>
+        <h3>心智带宽动态匹配算法</h3>
+        <p>我专门为自己的日常运转设计了一套「能量匹配技能」：每天上午认知带宽最充沛的黄金 3 小时，只做系统架构设计、核心商业策略推演等深度工作（Deep Work）；而在下午或脑力下降期，只执行代码部署检查、数据归档，或调用自动化脚本处理日常内容分发。</p>
+        <p>承认人的精力有潮汐，并用 AI 自动化系统兜底低能量时段的输出，才是长期主义创业者最好的防崩溃护城河。</p>
+        </article>
+        <article class="post-src" id="post-5" data-title="网感不是玄学：360 道题怎么把内容判断拆开" data-category="产品 · 内容判断">
+          <h3 class="post-src-title">网感不是玄学：360 道题怎么把内容判断拆开</h3>
+          <p class="post-src-cat">产品 · 内容判断</p>
+        <p>做「网感实验室」之前，我给团队改过上千条笔记。最难受的不是改稿，而是改完对方问一句「为什么这条行、那条不行」，我只能答「感觉」。这就是网感最大的问题：它真实存在，但无法传递。</p>
+        <h3>一题只考一个判断点</h3>
+        <p>所以这个产品没有做成课程，而是做成题库。题库共 360 道情境题，按选题、标题、开头、结构、表达、平台适配六个维度分组。每道题只放一个判断点：这条标题缺的是具体的人，还是信息量，还是情绪落差；这个开头是在讲自己，还是在讲用户。一题多考点，练完还是说不清。</p>
+        <h3>反馈必须指向可改的动作</h3>
+        <p>六维反馈不是给一个总分让你爽一下。它要回答的是：你这次判断错，是因为漏看了用户场景，还是因为把平台规则当成了内容规律。分数只用来定位短板，真正的产出是「下次遇到同类题目，先看哪一处」。</p>
+        <h3>AI 负责出题，人负责定答案</h3>
+        <p>工程上是小程序 + Vue 3 管理后台 + Node API。出题、生成解析、批量改写由 AI Skill 承担，但每道题的正确答案和评分口径由人拍死——一旦让模型自己判对错，题库就会在几轮迭代后漂移成「正确答案是模型的口味」。</p>
+        <p>网感不能速成，但可以被拆开、被记录、被复盘。这是我愿意花 60 天陪一个用户走完的原因。</p>
+        </article>
+        <article class="post-src" id="post-6" data-title="为什么把理财做成 20 张动作卡，而不是一门课" data-category="产品 · 行为设计">
+          <h3 class="post-src-title">为什么把理财做成 20 张动作卡，而不是一门课</h3>
+          <p class="post-src-cat">产品 · 行为设计</p>
+        <p>理财内容最大的问题是：用户看完觉得很有道理，然后什么都不做。不是知识不够，是知识和动作之间隔着一层「具体到今天就干什么」的翻译。</p>
+        <h3>一张卡只做一件事</h3>
+        <p>「第一桶金」把存下第一笔钱拆成 20 张动作卡：把三张卡的自动续费关掉、把一笔闲钱挪进单独的账户、给自己的时间算一次真实时薪、把一项技能报出第一个价格。每张卡都必须在今天能做完，做不完的卡就是设计失败的卡。</p>
+        <h3>数字要挣出来，不能送出去</h3>
+        <p>面板上的净资产、可盘活、一年能省，全部由已完成动作推算。没做的部分不显示预估值——不给你「我已经很努力」的错觉，这也是这个产品最容易得罪用户、但最不该妥协的地方。</p>
+        <h3>落到具体的端上</h3>
+        <p>主流程是微信小程序 + 云开发，另有一个不依赖网络的离线小工具，用来在没信号的时候也能把当天的动作记完。财务类产品的信任成本极高，所以从第一版起就不承诺收益、不推荐任何具体理财产品。</p>
+        <p>把「知道」变成「今天做完」，是我做这个产品唯一想验证的事。</p>
+        </article>
+        <article class="post-src" id="post-7" data-title="狗子画像：为什么做一个「不撮合」的画像工具" data-category="产品 · 画像工具">
+          <h3 class="post-src-title">狗子画像：为什么做一个「不撮合」的画像工具</h3>
+          <p class="post-src-cat">产品 · 画像工具</p>
+        <p>做狗子画像之前，最常听到的一句话是：做个匹配不就完了？我最后没做匹配，因为一旦做匹配，产品就必须为「结果」负责，而关系这件事根本没法为结果负责。</p>
+        <h3>只回答一个问题：你是什么配置</h3>
+        <p>30 道题测出 10 个维度的现实基线，12 道题测出你对伴侣的期待，两者一对比，缺口在哪一目了然。它不撮合、不配对、不算命，也不替你做决定。</p>
+        <h3>三层价值阶梯，定价跟着问题走</h3>
+        <p>结论层免费——分数、等级、雷达图、一个优势、一个最容易被误判的点。诊断层 ¥1.9 讲清成因。处方层 ¥6.9 / ¥9.9 才给「接下来怎么做」。买过 ¥1.9 再升级会全额抵扣，绝不会出现先买反而更贵。</p>
+        <h3>判断模式的底线：未知项不猜分</h3>
+        <p>已经有人选了的时候，用户要的不是「冠军是谁」，而是「差异在哪、当面该问什么」。所以条件里填「不确定」的项一律不参与计算，信息不够就明说暂不排序，不硬凑一个看起来很准的分数。</p>
+        <h3>邀请只送复测，不送现金</h3>
+        <p>被邀请方完成测评，邀请方拿一次免费复测。复测会把用户重新拉回来答题；现金返利是分销，个人主体碰不得。这些红线写进了自动化测试，2343 条断言里有一整套文案禁令与 SKU 守卫。</p>
+        </article>
+      </div>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2026 马泓宸 · All Rights Reserved</p>
+    <div class="container footer-inner">
+      <p>© 2026 若腾（马若腾 / Ma Ruoteng）· All Rights Reserved</p>
+      <a href="#home" class="up">回到顶部 ↑</a>
+    </div>
   </footer>
 
   <!-- Article Modal -->
-  <div class="article-modal" id="articleModal">
+  <div class="article-modal" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-content">
-      <button class="modal-close" onclick="closeArticle()">×</button>
-      <div class="modal-header">
+      <button class="modal-close" onclick="closeArticle()" aria-label="关闭文章">×</button>
+      <div class="modal-body">
         <h2 class="modal-title" id="modalTitle"></h2>
         <div class="modal-meta">
           <span class="modal-category" id="modalCategory"></span>
-          <span class="modal-date">2026年</span>
+          <span class="modal-date">2026 年 · 若腾专栏</span>
         </div>
-      </div>
-      <div class="modal-body">
         <div class="modal-article-content" id="modalContent"></div>
       </div>
       <div class="modal-footer">
@@ -2325,210 +3067,177 @@
   </div>
 
   <script>
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+    // #post-N 直达文章（便于分享定位）
+    window.addEventListener('load', () => {
+      const m = /^#post-(\d+)$/.exec(location.hash || '');
+      if (m) openArticle(m[1]);
     });
 
-    // Mobile nav toggle
+    // Header scroll state
+    const header = document.getElementById('header');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 24);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile nav
     const navToggle = document.getElementById('navToggle');
     const navOverlay = document.getElementById('navOverlay');
 
     navToggle.addEventListener('click', () => {
-      navToggle.classList.toggle('active');
-      navOverlay.classList.toggle('active');
-      document.body.style.overflow = navOverlay.classList.contains('active') ? 'hidden' : '';
+      const isOpen = navToggle.classList.toggle('active');
+      navOverlay.classList.toggle('active', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
     function closeNav() {
       navToggle.classList.remove('active');
       navOverlay.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
 
-    // Smooth scroll and active nav
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav a, .nav-overlay a');
+    // Smooth scroll + active nav
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav a, .nav-overlay a:not(.nav-cta)');
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+          e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
           closeNav();
         }
       });
     });
 
-    // Update active nav on scroll
-    window.addEventListener('scroll', () => {
+    const updateActive = () => {
       let current = '';
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= sectionTop - 200) {
-          current = section.getAttribute('id');
+        if (scrollY >= section.offsetTop - 220) {
+          current = section.id;
         }
       });
-
       navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    };
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Cursor spotlight on bento cards
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.querySelectorAll('.bento-card').forEach(card => {
+        card.addEventListener('pointermove', e => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+    }
+
+    // Articles data
+
+    // 一键复制（小程序名 / 抖音名 / 微信号）
+    function copyText(text, done) {
+      const fin = () => { if (done) done(); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(fin).catch(fin);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        fin();
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-copy]');
+      if (!btn) return;
+      const text = btn.getAttribute('data-copy');
+      copyText(text, () => {
+        const original = btn.textContent;
+        btn.textContent = '已复制：' + text;
+        setTimeout(() => { btn.textContent = original; }, 1600);
       });
     });
 
-    // Article content data
-    const articles = {
-      1: {
-        title: 'AI 时代的一人公司',
-        category: '商业 · AI',
-        content: `
-          <p>过去，一个人的力量是有限的。你需要在内容、运营、技术、管理之间不断切换，常常力不从心。但在 AI 时代，这种限制正在被打破。</p>
-
-          <h3>从工具到伙伴</h3>
-          <p>AI 不是简单的工具，它更像是一种能力放大器。一个具备核心能力的人，配合恰当的 AI 工具链，可以完成过去一个小团队才能完成的工作。这不是神话，而是正在发生的现实。</p>
-
-          <h3>重新定义效率</h3>
-          <p>传统的效率提升通常意味着"做更多"。但 AI 带来的效率提升是质的飞跃——它让你能够做自己擅长的事，而将其他工作交给 AI。这不是简单的分工，而是一种新的协作模式。</p>
-
-          <h3>核心能力依然重要</h3>
-          <p>但 AI 并非万能。它需要人来引导、来定义问题、来做出关键决策。因此，核心能力变得更重要了。你不需要什么都做，但必须知道自己要做什么，以及如何让 AI 做好它。</p>
-
-          <h3>未来工作的样子</h3>
-          <p>在 AI 时代的一人公司中，你的角色更像是一个"系统架构师"或"指挥官"。你构建 AI 工具链，定义工作流程，监控输出质量，并在关键节点做出判断。</p>
-
-          <p>这或许是未来工作的主流形态：不再是机械的劳动，而是创造性的系统设计。</p>
-        `
-      },
-      2: {
-        title: '为什么人与人会同频',
-        category: '关系 · 心理',
-        content: `
-          <p>有些人第一次见面就像认识了很久，有些人相处多年却始终难以理解。这种现象背后，是否存在着某种可以被量化的规律？</p>
-
-          <h3>信息结构的共振</h3>
-          <p>同频不是玄学，它可能是一种复杂的信息匹配过程。我们的经历、价值观、思维模式，构成了一个独特的"信息结构"。当两个信息结构在多个维度上形成共振时，就是所谓的"同频"。</p>
-
-          <h3>经历的相似性</h3>
-          <p>相似的经历会产生相似的理解框架。两个人如果走过类似的路径，他们对同一件事的理解往往会趋同。这种相似性是建立共鸣的基础。</p>
-
-          <h3>价值观的匹配</h3>
-          <p>更深层的同频来自价值观。价值观是我们做决策的底层代码。当两个人的价值观高度一致时，他们的判断逻辑也会相似，从而在决策层面达成默契。</p>
-
-          <h3>思维模式的互补</h3>
-          <p>同频不意味着完全相同。有时，互补的思维模式也能产生奇妙的化学反应。一个人擅长宏观，另一个人擅长细节，两人结合就能看到更完整的图景。这也是一种同频。</p>
-
-          <h3>AI 的角度</h3>
-          <p>如果我们把人的信息结构数据化，AI 或许能够帮助我们找到"同频"的概率。这不是为了替代人的直觉，而是为了让我们的社交更加高效，减少无效的社交成本。</p>
-
-          <p>同频是一种可遇不可求的幸运，但如果我们能更好地理解它，或许能增加这种幸运的概率。</p>
-        `
-      },
-      3: {
-        title: '技术如何改变个人创业',
-        category: '技术 · 商业',
-        content: `
-          <p>个人创业的本质，是在资源有限的情况下，创造商业价值。技术一直在降低这个门槛，但从未像今天这样彻底。</p>
-
-          <h3>历史的脉络</h3>
-          <p>回顾历史，每一次技术革命都降低了创业门槛。工业革命让一个人可以操作机器，生产过去需要几十人才能完成的产品。互联网让一个人可以触达全球用户，建立自己的品牌。而 AI，正在让一个人可以完成一个团队的工作。</p>
-
-          <h3>从全才到组织者</h3>
-          <p>过去，创业者需要是全才——懂产品、懂技术、懂市场、懂管理。这几乎是不可能的任务。AI 时代，你不再需要什么都会，只需要学会如何与 AI 协作。关键问题从"我能做什么"变成了"我能组织 AI 做什么"。</p>
-
-          <h3>AI 工具链的构建</h3>
-          <p>一个 AI 时代的创业者，核心能力之一是构建自己的 AI 工具链。这包括：选择合适的 AI 模型、设计提示词工程、建立自动化工作流、监控输出质量。这需要学习和实践，但一旦构建完成，就能产生持续的价值。</p>
-
-          <h3>试错成本的大幅降低</h3>
-          <p>个人创业最大的障碍是试错成本。过去，验证一个想法需要投入大量人力物力。现在，借助 AI，你可以快速生成产品原型、市场分析、营销文案。试错成本被大幅降低，这意味着你可以尝试更多的想法，找到真正有价值的方向。</p>
-
-          <h3>新的挑战</h3>
-          <p>但这并不意味着创业变得简单。新的挑战出现了：信息过载、AI 依赖、竞争加剧。在 AI 赋能的同时，每个人都被赋能了。如何在同一起跑线上脱颖而出，需要更深层的思考。</p>
-
-          <p>技术降低了门槛，但决定成功的关键，依然是人的洞察力、判断力和执行力。</p>
-        `
-      },
-      4: {
-        title: 'AI 是否会改变人与人的理解方式',
-        category: 'AI · 哲学',
-        content: `
-          <p>我们常说 AI 没有情感，但这是否意味着 AI 无法帮助我们理解情感？事实上，AI 正在成为一面镜子，通过模式识别和数据，让我们看到人与人之间那些细微的联系。</p>
-
-          <h3>情感的模式识别</h3>
-          <p>情感看似无形，但在沟通中却留下各种痕迹——语言的用词、语调的变化、回复的节奏。AI 可以识别这些模式，从而推断出背后的情绪状态。这不是理解情感，但可以增强我们对情感的感知。</p>
-
-          <h3>关系结构的可视化</h3>
-          <p>人与人之间的关系错综复杂，我们往往只能看到冰山一角。AI 可以通过分析大量的互动数据，构建出关系网络的结构——谁是意见领袖，谁是桥梁人物，哪些群体之间联系紧密。这种可视化让我们能更清晰地理解关系。</p>
-
-          <h3>偏见的揭示</h3>
-          <p>我们每个人都有自己的偏见，这些偏见会影响我们对他人和关系的理解。AI 不带有这些偏见，它基于数据说话。当 AI 的分析与我们的直觉不同时，它或许在提醒我们：我们的理解可能存在盲点。</p>
-
-          <h3>理解的边界</h3>
-          <p>但 AI 的理解是有边界的。它可以识别模式，但无法体会模式的内在意义。它可以告诉你两个人有很高的同频概率，但无法告诉你"同频"的感觉是什么。这需要人的直觉和经验来补充。</p>
-
-          <h3>协同的理解</h3>
-          <p>最理想的状态，或许是 AI 与人的协同。AI 提供数据和分析，人提供判断和直觉。AI 扩展了我们的感知范围，让我们能看到那些被忽略的细节；而人将这些细节整合成有意义的理解。</p>
-
-          <p>AI 不会替代人类的理解，但它可以扩展理解的边界。当我们学会了用 AI 的视角观察关系，或许能发现那些藏在日常之下的深刻规律。</p>
-        `
-      }
-    };
-
-    // Article modal functions
+    // Article modal
     function openArticle(id) {
       const modal = document.getElementById('articleModal');
-      const article = articles[id];
-      
-      if (article) {
-        document.getElementById('modalTitle').textContent = article.title;
-        document.getElementById('modalCategory').textContent = article.category;
-        document.getElementById('modalContent').innerHTML = article.content;
-        
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
+      const src = document.getElementById('post-' + id);
+      if (!src) return;
+
+      document.getElementById('modalTitle').textContent = src.getAttribute('data-title');
+      document.getElementById('modalCategory').textContent = src.getAttribute('data-category');
+      document.getElementById('modalContent').innerHTML = src.innerHTML;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (location.hash !== '#post-' + id) history.replaceState(null, '', '#post-' + id);
     }
 
     function closeArticle() {
       const modal = document.getElementById('articleModal');
       modal.classList.remove('active');
+      if (location.hash.indexOf('#post-') === 0) history.replaceState(null, '', location.pathname + location.search);
       document.body.style.overflow = '';
     }
 
-    // Close modal when clicking outside
-    document.getElementById('articleModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeArticle();
-      }
+    // Keyboard support for article cards
+    document.querySelectorAll('.article-card').forEach(card => {
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
     });
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
+    document.getElementById('articleModal').addEventListener('click', function (e) {
+      if (e.target === this) closeArticle();
+    });
+
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         closeArticle();
+        closeNav();
       }
     });
 
-    // Show WeChat ID
+    // Copy WeChat ID
     function showWeChat() {
       const btn = document.getElementById('wechatBtn');
-      if (btn.querySelector('span:last-child').textContent === 'WeChat') {
-        btn.querySelector('span:last-child').textContent = 'max1100011';
-        btn.style.borderColor = '#07c160';
-        btn.style.color = '#07c160';
-      } else {
-        btn.querySelector('span:last-child').textContent = 'WeChat';
-        btn.style.borderColor = '';
-        btn.style.color = '';
+      const text = document.getElementById('wechatText');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('max1100011').catch(() => {});
       }
+      btn.classList.add('copied');
+      text.textContent = '已复制：max1100011';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        text.textContent = '微信：max1100011（点击复制）';
+      }, 3000);
     }
   </script>
 </body>
